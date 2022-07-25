@@ -145,11 +145,12 @@ def get_model_predictions(tweet):
 
     _, test_prediction = loaded_model(encoding["input_ids"], encoding["attention_mask"])
     test_prediction = test_prediction.flatten().detach()
+    prediction_values = [pred.item() for pred in test_prediction]
     LABEL_COLUMNS = ['Neutral', 'General Criticsm', 'Disability Shaming', 'Racial Prejudice',
                  'Sexism','LGBTQ+ Phobia']
 
     result = []
-    for label, prediction in zip(LABEL_COLUMNS, test_prediction):
+    for label, prediction in zip(LABEL_COLUMNS, prediction_values):
         result.append([label, prediction])
 
     return result
@@ -178,7 +179,7 @@ with dataset:
     sentence = st.text_input('Input your sentence here:')
     if sentence:
         answer = get_model_predictions(sentence)
-        st.write(answer)
+        #st.write(answer)
     else:
         answer = [['Neutral', 1.0], ['General Criticism', 0],
         ['Disability Shaming', 0], ['Sexism', 0],
