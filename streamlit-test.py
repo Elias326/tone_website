@@ -164,6 +164,8 @@ header = st.container()
 mission = st.container()
 dataset = st.container()
 models = st.container()
+#ale changed this line
+java = st.container()
 resource = st.container()
 
 with header:
@@ -207,31 +209,33 @@ with dataset:
     # st.text(pred)
 
 #Writes the html/css/javascript: Mostly for the donut chart
-components.html(
-    """
-    <section>
-    <div class="donut-chart", style = "position:relative; background-color: transparent;">
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-      <script type="text/javascript">
-        google.charts.load("current", {packages:["corechart"]});
-        google.charts.setOnLoadCallback(drawChart);
-        function drawChart() {
-          var data = google.visualization.arrayToDataTable(""" + str(answer) + """);
-          var options = {
-            title: 'Tone Representation',
-            pieHole: 0.4,
-            colors: ['#36d8ff', '#529ffc', '#31356e', '#66757f', '#5F9EA0', '#96DED1']
-          };
-          var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
-          chart.draw(data, options);
-        }
-      </script>
-      <div id="donutchart" style="width: 700px; height: 350px;"></div></p>
-    </div>
-    </section>
-    """,
-    height=600,
-)
+#ale changed this too
+with java:
+    components.html(
+        """
+        <section>
+        <div class="donut-chart", style = "position:relative; background-color: transparent;">
+      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+          <script type="text/javascript">
+            google.charts.load("current", {packages:["corechart"]});
+            google.charts.setOnLoadCallback(drawChart);
+            function drawChart() {
+              var data = google.visualization.arrayToDataTable(""" + str(answer) + """);
+              var options = {
+                title: 'Tone Representation',
+                pieHole: 0.4,
+                colors: ['#36d8ff', '#529ffc', '#31356e', '#66757f', '#5F9EA0', '#96DED1']
+              };
+              var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+              chart.draw(data, options);
+            }
+          </script>
+          <div id="donutchart" style="width: 700px; height: 350px;"></div></p>
+        </div>
+        </section>
+        """,
+        height=600,
+    )
 
 # Resources page #
 with resource:
