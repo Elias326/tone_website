@@ -17,10 +17,3 @@ tokenizers==0.12.1
 txt2tags==3.7
 virtualenv==20.13.1
 visions==0.7.4
-
-
-
-torch>=1.10.0
-pytorch-lightning>=1.6.0
-torchmetrics>=0.7.0
-transformers>=4.11.2
