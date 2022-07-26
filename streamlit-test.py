@@ -188,7 +188,8 @@ with dataset:
         ['Disability Shaming', 0], ['Sexism', 0],
         ['Racial Prejudice', 0], ['LGBTQ+ Phobia', 0]
         ]
-    st.text("""Data description: The data is composed of 24,000 tweets from the kaggle dataset, Hate Speech and Offensive Language Dataset.
+    st.text("""
+    Data description: The data is composed of 24,000 tweets from the kaggle dataset, Hate Speech and Offensive Language Dataset.
     It was conceived to be used to research hate speech suchas racial, homophobic, sexist, and general offensive language.
     The origional dataset had the following columns that we would later modify: hate_speech, offensive_language, and neither.
     Since we wanted to help users reflect deeper about the type of offensive language they may be putting out into the world,
@@ -240,7 +241,8 @@ with java:
 # Resources page #
 with resource:
     st.title("Resources")
-    st.write(""" Given the nature of our product, we were hoping that we could
+    st.write("""
+    Given the nature of our product, we were hoping that we could
     provide resources for users to learn more about ways to combat or
     educate themselves regarding offensive language. Below are some
     resources we provided as a stepping stone to learn more about LGBTQ+
