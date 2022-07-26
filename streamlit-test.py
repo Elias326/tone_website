@@ -227,7 +227,7 @@ components.html(
 # Resources page #
 with resource:
     st.title("Resources")
-    st.text(""" Given the nature of our product, we were hoping that we could
+    st.write(""" Given the nature of our product, we were hoping that we could
             provide resources for users to learn more about ways to combat or
             educate themselves regarding offensive language. Below are some
             resources we provided as a stepping stone to learn more about LGBTQ+
