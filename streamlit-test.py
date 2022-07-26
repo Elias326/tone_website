@@ -186,9 +186,18 @@ with dataset:
         ['Disability Shaming', 0], ['Sexism', 0],
         ['Racial Prejudice', 0], ['LGBTQ+ Phobia', 0]
         ]
-    st.text("""The data is composed of 24,000 tweets from the kaggle dataset, Hate Speech and Offensive Language Dataset. It was conceived to be used to research hate speech such
-    as racial, homophobic, sexist, and general offensive language. The origional dataset origionally had
-    the following columns: hate_speech, offensive_language, and neither. We added more columns. Here, take a look""")
+    st.text("""Data description: The data is composed of 24,000 tweets from the kaggle dataset, Hate Speech and Offensive Language Dataset.
+    It was conceived to be used to research hate speech suchas racial, homophobic, sexist, and general offensive language.
+    The origional dataset had the following columns that we would later modify: hate_speech, offensive_language, and neither.
+    Since we wanted to help users reflect deeper about the type of offensive language they may be putting out into the world,
+    we decided to alter the dataset in the following ways:
+    We began by creating the following columns: 'Neutral','General Criticism', 'Disability Shaming', 'Sexism','Racial Prejudice', and
+    'LGBTQ+ Phobic'. Since these new labels were not present in the original dataset, we needed to relabel using our new columns.
+    Language is fundamentally complex and context is important to discern more subtle offensive sentences and phrases. We wanted to
+    be mindful, accurate, and consistant with our relbeling process. To do this we created a labeling methodology [link here] that each one of our
+    members followed while manually reading and relabeling thousands of tweets. We then fed our newly relabeled into our PyTorch model
+    where we train the machine learning algorithm to recognize hate speech and predict the type of offensive language. Here's a preview
+    of our dataset using real tweets:""")
     data = pd.read_csv("multi_label_new.csv", encoding = "ISO-8859-1")
     answer.insert(0, ['Task', 'Hours per Day'])
 
@@ -251,27 +260,4 @@ with resource:
     st.write("Etiquette: Interacting with People with Disabilities: [link] (https://www.respectability.org/inclusion-toolkits/etiquette-interacting-with-people-with-disabilities/)")
     st.write("Illinois Department of Human Services - A Guide to Interacting with People with Disabilities: [link] (https://www.dhs.state.il.us/page.aspx?item=32276)")
     st.write("New York State Department of Health: Disability Etiquette Treat: Everyone with Respect: [link] (https://www.health.ny.gov/publications/0951.pdf)")
-    st.write("Capital Women’s Care’s Showing Acceptance and Respect for Those with Disabilities: [link] (https://www.cwcare.net/news/showing-acceptance-and-respect-those-disabilities)")
-
-
-""" #get animations
-    def load_lottiefile(filepath: str):
-        with open(filepath, "r") as f:
-            return json.load(f)
-    def load_lottieurl(url: str):
-        r = requests.get(url)
-        if r.status_code != 200:
-            return None
-        return r.json()
-    lottie_chart = load_lottieurl("https://assets4.lottiefiles.com/packages/lf20_nedzkmew.json")
-    st_lottie(
-    lottie_chart,
-    speed=1,
-    reverse=False,
-    loop=True,
-    quality="low", # medium ; high
-    height=300,
-    width=300,
-    key=None,
-    )
-"""
+    st.write("Capital Women’s Care’s Showing Acceptance and Respect for Those with Disabilities: [link] (https://www.cwcare.net/news/showing-acceptance-and-respect-those-disabilities)")
