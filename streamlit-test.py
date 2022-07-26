@@ -260,4 +260,4 @@ with resource:
     st.write("Etiquette: Interacting with People with Disabilities: [link] (https://www.respectability.org/inclusion-toolkits/etiquette-interacting-with-people-with-disabilities/)")
     st.write("Illinois Department of Human Services - A Guide to Interacting with People with Disabilities: [link] (https://www.dhs.state.il.us/page.aspx?item=32276)")
     st.write("New York State Department of Health: Disability Etiquette Treat: Everyone with Respect: [link] (https://www.health.ny.gov/publications/0951.pdf)")
-    st.write("Capital Women’s Care’s Showing Acceptance and Respect for Those with Disabilities: [link] (https://www.cwcare.net/news/showing-acceptance-and-respect-those-disabilities)")
+    st.write("Capital Women’s Care’s Showing Acceptance and Respect for Those with Disabilities: [link] (https://www.cwcare.net/news/showing-acceptance-and-respect-those-disabilities)")
