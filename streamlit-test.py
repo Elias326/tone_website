@@ -1,3 +1,4 @@
+from pydoc import describe
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -164,6 +165,7 @@ mission = st.container()
 dataset = st.container()
 models = st.container()
 resource = st.container()
+describe_data = st.container()
 
 with header:
     #Insert  Title
@@ -183,7 +185,14 @@ with dataset:
     sentence = st.text_input('Input your sentence here:')
     if sentence:
         answer = get_model_predictions(sentence)
-        components.html(
+
+        #st.write(answer)
+    else:
+        answer = [['Neutral', 1.0], ['General Criticism', 0],
+        ['Disability Shaming', 0], ['Sexism', 0],
+        ['Racial Prejudice', 0], ['LGBTQ+ Phobia', 0]
+        ]
+    components.html(
                 """
                 <section>
                 <div class="donut-chart", style = "position:relative; background-color: transparent;">
@@ -206,14 +215,10 @@ with dataset:
                 </div>
                 </section>
                 """,
-                height=600,
+                height=800,
         )
-        #st.write(answer)
-    else:
-        answer = [['Neutral', 1.0], ['General Criticism', 0],
-        ['Disability Shaming', 0], ['Sexism', 0],
-        ['Racial Prejudice', 0], ['LGBTQ+ Phobia', 0]
-        ]
+
+with describe_data:
     st.title("Data description")
     st.text("""
     The data is composed of 24,000 tweets from the kaggle dataset, Hate Speech and Offensive Language Dataset.
