@@ -183,6 +183,31 @@ with dataset:
     if sentence:
         answer = get_model_predictions(sentence)
         #st.write(answer)
+        components.html(
+        """
+        <section>
+        <div class="donut-chart", style = "position:relative; background-color: transparent;">
+      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+          <script type="text/javascript">
+            google.charts.load("current", {packages:["corechart"]});
+            google.charts.setOnLoadCallback(drawChart);
+            function drawChart() {
+              var data = google.visualization.arrayToDataTable(""" + str(answer) + """);
+              var options = {
+                title: 'Tone Representation',
+                pieHole: 0.4,
+                colors: ['#36d8ff', '#529ffc', '#31356e', '#66757f', '#5F9EA0', '#96DED1']
+              };
+              var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+              chart.draw(data, options);
+            }
+          </script>
+          <div id="donutchart" style="width: 700px; height: 350px;"></div></p>
+        </div>
+        </section>
+        """,
+        height=700,
+    )
     else:
         answer = [['Neutral', 1.0], ['General Criticism', 0],
         ['Disability Shaming', 0], ['Sexism', 0],
@@ -231,11 +256,11 @@ with java:
               chart.draw(data, options);
             }
           </script>
-          <div id="donutchart" style="width: 800px; height: 400px;"></div></p>
+          <div id="donutchart" style="width: 700px; height: 350px;"></div></p>
         </div>
         </section>
         """,
-        height=600,
+        height=800,
     )
 
 # Resources page #
