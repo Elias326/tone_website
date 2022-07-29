@@ -12,6 +12,7 @@ import streamlit.components.v1 as components
 import subprocess
 import sys
 from pip._internal import main as pipmain
+from annotated_text import annotated_text
 
 pipmain(['install', "torch"])
 pipmain(['install', "torchmetrics"])
@@ -164,7 +165,6 @@ header = st.container()
 mission = st.container()
 dataset = st.container()
 models = st.container()
-#ale changed this line
 java = st.container()
 resource = st.container()
 
@@ -175,42 +175,12 @@ with header:
     st.image(image, caption = "Toning down the bad vibes")
 
 with mission:
-    st.title("Mission Statement:")
-    st.text("Promoting empathy among Twitter Users to reduce offensive content that harms the wellness of users")
-
-with dataset:
-    sentence = st.text_input('Input your sentence here:')
-    if sentence:
-        answer = get_model_predictions(sentence)
-        #st.write(answer)
-    else:
-        answer = [['Neutral', 1.0], ['General Criticism', 0],
-        ['Disability Shaming', 0], ['Sexism', 0],
-        ['Racial Prejudice', 0], ['LGBTQ+ Phobia', 0]
-        ]
+    annotated_text("Mission Statement", ":","#8ef")
+    #st.title("Mission Statement:")
     st.text("""
-    Data description: The data is composed of 24,000 tweets from the kaggle dataset, Hate Speech and Offensive Language Dataset.
-    It was conceived to be used to research hate speech suchas racial, homophobic, sexist, and general offensive language.
-    The origional dataset had the following columns that we would later modify: hate_speech, offensive_language, and neither.
-    Since we wanted to help users reflect deeper about the type of offensive language they may be putting out into the world,
-    we decided to alter the dataset in the following ways:
-    We began by creating the following columns: 'Neutral','General Criticism', 'Disability Shaming', 'Sexism','Racial Prejudice', and
-    'LGBTQ+ Phobic'. Since these new labels were not present in the original dataset, we needed to relabel using our new columns.
-    Language is fundamentally complex and context is important to discern more subtle offensive sentences and phrases. We wanted to
-    be mindful, accurate, and consistant with our relbeling process. To do this we created a labeling methodology [link here] that each one of our
-    members followed while manually reading and relabeling thousands of tweets. We then fed our newly relabeled into our PyTorch model
-    where we train the machine learning algorithm to recognize hate speech and predict the type of offensive language. Here's a preview
-    of our dataset using real tweets:""")
-    data = pd.read_csv("multi_label_new.csv", encoding = "ISO-8859-1")
-    answer.insert(0, ['Task', 'Hours per Day'])
+    Promoting empathy among Twitter Users to reduce offensive content that harms 
+    the wellness of users""")
 
-
-    st.write(data.tail(10))
-    # pred = model.get_model_predictions("I hate james a lot")
-    # st.text(pred)
-
-#Writes the html/css/javascript: Mostly for the donut chart
-#ale changed this too
 with java:
     components.html(
         """
@@ -238,6 +208,42 @@ with java:
         height=600,
     )
 
+with dataset:
+    sentence = st.text_input('Input your sentence here:')
+    if sentence:
+        answer = get_model_predictions(sentence)
+        #st.write(answer)
+    else:
+        answer = [['Neutral', 1.0], ['General Criticism', 0],
+        ['Disability Shaming', 0], ['Sexism', 0],
+        ['Racial Prejudice', 0], ['LGBTQ+ Phobia', 0]
+        ]
+    annotated_text("Data description", ":","#8ef")
+    st.text("""
+    The data is composed of 24,000 tweets from the kaggle dataset, Hate Speech and Offensive Language Dataset.
+    It was conceived to be used to research hate speech suchas racial, homophobic, sexist, and general offensive language.
+    The origional dataset had the following columns that we would later modify: hate_speech, offensive_language, and neither.
+    Since we wanted to help users reflect deeper about the type of offensive language they may be putting out into the world,
+    we decided to alter the dataset in the following ways:
+    We began by creating the following columns: 'Neutral','General Criticism', 'Disability Shaming', 'Sexism','Racial Prejudice', and
+    'LGBTQ+ Phobic'. Since these new labels were not present in the original dataset, we needed to relabel using our new columns.
+    Language is fundamentally complex and context is important to discern more subtle offensive sentences and phrases. We wanted to
+    be mindful, accurate, and consistant with our relbeling process. To do this we created a labeling methodology [link here] that each one of our
+    members followed while manually reading and relabeling thousands of tweets. We then fed our newly relabeled into our PyTorch model
+    where we train the machine learning algorithm to recognize hate speech and predict the type of offensive language. Here's a preview
+    of our dataset using real tweets:""")
+    data = pd.read_csv("multi_label_new.csv", encoding = "ISO-8859-1")
+    answer.insert(0, ['Task', 'Hours per Day'])
+
+
+    st.write(data.tail(10))
+    # pred = model.get_model_predictions("I hate james a lot")
+    # st.text(pred)
+
+#Writes the html/css/javascript: Mostly for the donut chart
+#ale changed this too
+
+
 # Resources page #
 with resource:
     st.title("Resources")
@@ -248,20 +254,20 @@ with resource:
     resources we provided as a stepping stone to learn more about LGBTQ+
     community, gender equity, Disability awareness, and racial equality.""")
 
-    st.write("Sexism:")
+    annotated_text("Sexism", ":","#8ef")
     st.write("Britannica - Sexism Definition:[link](https://www.britannica.com/topic/sexism)")
     st.write("European Institute for Gender Equality - What is Sexism: [link] (https://eige.europa.eu/publications/sexism-at-work-handbook/part-1-understand/what-sexism)")
     st.write("Human Rights Channel - Sexism: See it. Name it. Stop it: [link] (https://human-rights-channel.coe.int/stop-sexism-en.html)")
     st.write("Science Direct - Sexism: [link] (https://www.sciencedirect.com/topics/psychology/sexism)")
 
-    st.write("Racial Prejudice:")
+    annotated_text("Racial Prejudice", ":","#8ef")
     st.write("United Nations Declaration on Race and Racial Prejudice: [link] (https://www.ohchr.org/en/instruments-mechanisms/instruments/declaration-race-and-racial-prejudice")
     st.write("U.S. Equal Employment Opportunity Commission Race/Color Discrimination: [link] (https://www.eeoc.gov/racecolor-discrimination)")
     st.write("Alberta Civil Liberties Research Centre - Racism: [link] (https://www.aclrc.com/racism)")
     st.write("The National Association of School Psychologists (NASP) - Prejudice, Discrimination, and Racism: [link] (https://www.nasponline.org/x26830.xml)")
     st.write("University of Minnesota - Prejudice – Sociology - Publishing Services:[link] (https://open.lib.umn.edu/sociology/chapter/10-3-prejudice/)")
 
-    st.write("Disability")
+    annotated_text("Disabilities", ":","#8ef")
     st.write("The Lakeshore West Michigan’s How to respect people with disabilities: [link] (https://www.secondwavemedia.com/lakeshore/features/Persons_First_Language_respects_people_with_disabilities.aspx)")
     st.write("Etiquette: Interacting with People with Disabilities: [link] (https://www.respectability.org/inclusion-toolkits/etiquette-interacting-with-people-with-disabilities/)")
     st.write("Illinois Department of Human Services - A Guide to Interacting with People with Disabilities: [link] (https://www.dhs.state.il.us/page.aspx?item=32276)")
