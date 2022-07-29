@@ -250,20 +250,20 @@ with resource:
     resources we provided as a stepping stone to learn more about LGBTQ+
     community, gender equity, Disability awareness, and racial equality.""")
 
-    annotated_text("Sexism", ":","#8ef")
+    st.title("Sexism")
     st.write("Britannica - Sexism Definition:[link](https://www.britannica.com/topic/sexism)")
     st.write("European Institute for Gender Equality - What is Sexism: [link] (https://eige.europa.eu/publications/sexism-at-work-handbook/part-1-understand/what-sexism)")
     st.write("Human Rights Channel - Sexism: See it. Name it. Stop it: [link] (https://human-rights-channel.coe.int/stop-sexism-en.html)")
     st.write("Science Direct - Sexism: [link] (https://www.sciencedirect.com/topics/psychology/sexism)")
 
-    annotated_text("Racial Prejudice", ":","#8ef")
+    st.title("Racial Prejudice")
     st.write("United Nations Declaration on Race and Racial Prejudice: [link] (https://www.ohchr.org/en/instruments-mechanisms/instruments/declaration-race-and-racial-prejudice")
     st.write("U.S. Equal Employment Opportunity Commission Race/Color Discrimination: [link] (https://www.eeoc.gov/racecolor-discrimination)")
     st.write("Alberta Civil Liberties Research Centre - Racism: [link] (https://www.aclrc.com/racism)")
     st.write("The National Association of School Psychologists (NASP) - Prejudice, Discrimination, and Racism: [link] (https://www.nasponline.org/x26830.xml)")
     st.write("University of Minnesota - Prejudice – Sociology - Publishing Services:[link] (https://open.lib.umn.edu/sociology/chapter/10-3-prejudice/)")
 
-    annotated_text("Disabilities", ":","#8ef")
+    st.title("Disabilities")
     st.write("The Lakeshore West Michigan’s How to respect people with disabilities: [link] (https://www.secondwavemedia.com/lakeshore/features/Persons_First_Language_respects_people_with_disabilities.aspx)")
     st.write("Etiquette: Interacting with People with Disabilities: [link] (https://www.respectability.org/inclusion-toolkits/etiquette-interacting-with-people-with-disabilities/)")
     st.write("Illinois Department of Human Services - A Guide to Interacting with People with Disabilities: [link] (https://www.dhs.state.il.us/page.aspx?item=32276)")
