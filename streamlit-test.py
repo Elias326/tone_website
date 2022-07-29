@@ -231,7 +231,7 @@ with java:
               chart.draw(data, options);
             }
           </script>
-          <div id="donutchart" style="width: 700px; height: 350px;"></div></p>
+          <div id="donutchart" style="width: 800px; height: 400px;"></div></p>
         </div>
         </section>
         """,
