@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 #import os
 import matplotlib.pyplot as plt
-from streamlit_lottie import st_lottie
+#from streamlit_lottie import st_lottie
 import json
 import requests
 from PIL import Image
@@ -12,13 +12,15 @@ import streamlit.components.v1 as components
 import subprocess
 import sys
 from pip._internal import main as pipmain
-from annotated_text import annotated_text
 
 pipmain(['install', "torch"])
 pipmain(['install', "torchmetrics"])
 pipmain(['install', "pytorch_lightning"])
 pipmain(['install', "pylab"])
 pipmain(['install', "transformers"])
+pipmain(['install', "st-annotated-text"])
+
+from annotated_text import annotated_text
 
 # from model import *
 #######3#model.py##########
@@ -165,7 +167,6 @@ header = st.container()
 mission = st.container()
 dataset = st.container()
 models = st.container()
-java = st.container()
 resource = st.container()
 
 with header:
@@ -178,40 +179,39 @@ with mission:
     annotated_text("Mission Statement", ":","#8ef")
     #st.title("Mission Statement:")
     st.text("""
-    Promoting empathy among Twitter Users to reduce offensive content that harms 
+    Promoting empathy among Twitter Users to reduce offensive content that harms
     the wellness of users""")
 
-with java:
-    components.html(
-        """
-        <section>
-        <div class="donut-chart", style = "position:relative; background-color: transparent;">
-      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-          <script type="text/javascript">
-            google.charts.load("current", {packages:["corechart"]});
-            google.charts.setOnLoadCallback(drawChart);
-            function drawChart() {
-              var data = google.visualization.arrayToDataTable(""" + str(answer) + """);
-              var options = {
-                title: 'Tone Representation',
-                pieHole: 0.4,
-                colors: ['#36d8ff', '#529ffc', '#31356e', '#66757f', '#5F9EA0', '#96DED1']
-              };
-              var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
-              chart.draw(data, options);
-            }
-          </script>
-          <div id="donutchart" style="width: 700px; height: 350px;"></div></p>
-        </div>
-        </section>
-        """,
-        height=600,
-    )
 
 with dataset:
     sentence = st.text_input('Input your sentence here:')
     if sentence:
         answer = get_model_predictions(sentence)
+        components.html(
+                """
+                <section>
+                <div class="donut-chart", style = "position:relative; background-color: transparent;">
+              <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                  <script type="text/javascript">
+                    google.charts.load("current", {packages:["corechart"]});
+                    google.charts.setOnLoadCallback(drawChart);
+                    function drawChart() {
+                      var data = google.visualization.arrayToDataTable(""" + str(answer) + """);
+                      var options = {
+                        title: 'Tone Representation',
+                        pieHole: 0.4,
+                        colors: ['#36d8ff', '#529ffc', '#31356e', '#66757f', '#5F9EA0', '#96DED1']
+                      };
+                      var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+                      chart.draw(data, options);
+                    }
+                  </script>
+                  <div id="donutchart" style="width: 700px; height: 350px;"></div></p>
+                </div>
+                </section>
+                """,
+                height=600,
+        )
         #st.write(answer)
     else:
         answer = [['Neutral', 1.0], ['General Criticism', 0],
