@@ -172,7 +172,7 @@ with header:
     st.image(image, caption = "Toning down the bad vibes")
 
 with mission:
-    annotated_text("Mission Statement", ":","#8ef")
+    st.title("Mission Statement")
     #st.title("Mission Statement:")
     st.text("""
     Promoting empathy among Twitter Users to reduce offensive content that harms
@@ -214,7 +214,7 @@ with dataset:
         ['Disability Shaming', 0], ['Sexism', 0],
         ['Racial Prejudice', 0], ['LGBTQ+ Phobia', 0]
         ]
-    annotated_text("Data description", ":","#8ef")
+    st.title("Data description")
     st.text("""
     The data is composed of 24,000 tweets from the kaggle dataset, Hate Speech and Offensive Language Dataset.
     It was conceived to be used to research hate speech suchas racial, homophobic, sexist, and general offensive language.
