@@ -17,3 +17,9 @@ tokenizers==0.12.1
 txt2tags==3.7
 virtualenv==20.13.1
 visions==0.7.4
+
+torch==1.12.0
+torchmetrics==0.9.3
+pytorch-lightning==1.6.5
+pylab-sdk==1.3.2
+transformers==4.21.0
