@@ -1,10 +1,9 @@
-from pydoc import describe
 import streamlit as st
 import pandas as pd
 import numpy as np
 #import os
 import matplotlib.pyplot as plt
-#from streamlit_lottie import st_lottie
+from streamlit_lottie import st_lottie
 import json
 import requests
 from PIL import Image
@@ -48,6 +47,7 @@ from pytorch_lightning.loggers import TensorBoardLogger
 # from sklearn.model_selection import train_test_split
 # from sklearn.metrics import classification_report, multilabel_confusion_matrix
 # import seaborn as sns
+#from pylab import rcParams
 # from matplotlib import rc
 
 # %matplotlib inline
@@ -163,11 +163,10 @@ def get_model_predictions(tweet):
 header = st.container()
 mission = st.container()
 dataset = st.container()
-java = st.container()
 models = st.container()
-describe_data = st.container()
+#ale changed this line
+java = st.container()
 resource = st.container()
-
 
 with header:
     #Insert  Title
@@ -176,56 +175,21 @@ with header:
     st.image(image, caption = "Toning down the bad vibes")
 
 with mission:
-    st.title("Mission Statement")
-    #st.title("Mission Statement:")
-    st.text("""
-    Promoting empathy among Twitter Users to reduce offensive content that harms
-    the wellness of users""")
-
+    st.title("Mission Statement:")
+    st.text("Promoting empathy among Twitter Users to reduce offensive content that harms the wellness of users")
 
 with dataset:
     sentence = st.text_input('Input your sentence here:')
     if sentence:
         answer = get_model_predictions(sentence)
-
         #st.write(answer)
     else:
         answer = [['Neutral', 1.0], ['General Criticism', 0],
         ['Disability Shaming', 0], ['Sexism', 0],
         ['Racial Prejudice', 0], ['LGBTQ+ Phobia', 0]
         ]
-
-with java:
-  components.html(
-                """
-                <section>
-                <div class="donut-chart", style = "position:relative; background-color: transparent;">
-              <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-                  <script type="text/javascript">
-                    google.charts.load("current", {packages:["corechart"]});
-                    google.charts.setOnLoadCallback(drawChart);
-                    function drawChart() {
-                      var data = google.visualization.arrayToDataTable(""" + str(answer) + """);
-                      var options = {
-                        title: 'Tone Representation',
-                        pieHole: 0.4,
-                        colors: ['#36d8ff', '#529ffc', '#31356e', '#66757f', '#5F9EA0', '#96DED1']
-                      };
-                      var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
-                      chart.draw(data, options);
-                    }
-                  </script>
-                  <div id="donutchart" style="width: 700px; height: 350px;"></div></p>
-                </div>
-                </section>
-                """,
-                height=400,
-        )
-
-with describe_data:
-    st.title("Data description")
     st.text("""
-    The data is composed of 24,000 tweets from the kaggle dataset, Hate Speech and Offensive Language Dataset.
+    Data description: The data is composed of 24,000 tweets from the kaggle dataset, Hate Speech and Offensive Language Dataset.
     It was conceived to be used to research hate speech suchas racial, homophobic, sexist, and general offensive language.
     The origional dataset had the following columns that we would later modify: hate_speech, offensive_language, and neither.
     Since we wanted to help users reflect deeper about the type of offensive language they may be putting out into the world,
@@ -239,12 +203,40 @@ with describe_data:
     of our dataset using real tweets:""")
     data = pd.read_csv("multi_label_new.csv", encoding = "ISO-8859-1")
     answer.insert(0, ['Task', 'Hours per Day'])
-    st.write(data.tail(10))
 
+
+    st.write(data.tail(10))
+    # pred = model.get_model_predictions("I hate james a lot")
+    # st.text(pred)
 
 #Writes the html/css/javascript: Mostly for the donut chart
 #ale changed this too
-
+with java:
+    components.html(
+        """
+        <section>
+        <div class="donut-chart", style = "position:relative; background-color: transparent;">
+      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+          <script type="text/javascript">
+            google.charts.load("current", {packages:["corechart"]});
+            google.charts.setOnLoadCallback(drawChart);
+            function drawChart() {
+              var data = google.visualization.arrayToDataTable(""" + str(answer) + """);
+              var options = {
+                title: 'Tone Representation',
+                pieHole: 0.4,
+                colors: ['#36d8ff', '#529ffc', '#31356e', '#66757f', '#5F9EA0', '#96DED1']
+              };
+              var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+              chart.draw(data, options);
+            }
+          </script>
+          <div id="donutchart" style="width: 700px; height: 350px;"></div></p>
+        </div>
+        </section>
+        """,
+        height=600,
+    )
 
 # Resources page #
 with resource:
@@ -256,20 +248,20 @@ with resource:
     resources we provided as a stepping stone to learn more about LGBTQ+
     community, gender equity, Disability awareness, and racial equality.""")
 
-    st.title("Sexism")
+    st.write("Sexism:")
     st.write("Britannica - Sexism Definition:[link](https://www.britannica.com/topic/sexism)")
     st.write("European Institute for Gender Equality - What is Sexism: [link] (https://eige.europa.eu/publications/sexism-at-work-handbook/part-1-understand/what-sexism)")
     st.write("Human Rights Channel - Sexism: See it. Name it. Stop it: [link] (https://human-rights-channel.coe.int/stop-sexism-en.html)")
     st.write("Science Direct - Sexism: [link] (https://www.sciencedirect.com/topics/psychology/sexism)")
 
-    st.title("Racial Prejudice")
+    st.write("Racial Prejudice:")
     st.write("United Nations Declaration on Race and Racial Prejudice: [link] (https://www.ohchr.org/en/instruments-mechanisms/instruments/declaration-race-and-racial-prejudice")
     st.write("U.S. Equal Employment Opportunity Commission Race/Color Discrimination: [link] (https://www.eeoc.gov/racecolor-discrimination)")
     st.write("Alberta Civil Liberties Research Centre - Racism: [link] (https://www.aclrc.com/racism)")
     st.write("The National Association of School Psychologists (NASP) - Prejudice, Discrimination, and Racism: [link] (https://www.nasponline.org/x26830.xml)")
     st.write("University of Minnesota - Prejudice – Sociology - Publishing Services:[link] (https://open.lib.umn.edu/sociology/chapter/10-3-prejudice/)")
 
-    st.title("Disabilities")
+    st.write("Disability")
     st.write("The Lakeshore West Michigan’s How to respect people with disabilities: [link] (https://www.secondwavemedia.com/lakeshore/features/Persons_First_Language_respects_people_with_disabilities.aspx)")
     st.write("Etiquette: Interacting with People with Disabilities: [link] (https://www.respectability.org/inclusion-toolkits/etiquette-interacting-with-people-with-disabilities/)")
     st.write("Illinois Department of Human Services - A Guide to Interacting with People with Disabilities: [link] (https://www.dhs.state.il.us/page.aspx?item=32276)")
