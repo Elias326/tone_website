@@ -219,9 +219,9 @@ with java:
                 </div>
                 </section>
                 """,
-                height=800,
+                height=400,
         )
-        
+
 with describe_data:
     st.title("Data description")
     st.text("""
