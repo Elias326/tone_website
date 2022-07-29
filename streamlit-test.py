@@ -163,9 +163,11 @@ def get_model_predictions(tweet):
 header = st.container()
 mission = st.container()
 dataset = st.container()
+java = st.container()
 models = st.container()
-resource = st.container()
 describe_data = st.container()
+resource = st.container()
+
 
 with header:
     #Insert  Title
@@ -192,7 +194,9 @@ with dataset:
         ['Disability Shaming', 0], ['Sexism', 0],
         ['Racial Prejudice', 0], ['LGBTQ+ Phobia', 0]
         ]
-    components.html(
+
+with java:
+  components.html(
                 """
                 <section>
                 <div class="donut-chart", style = "position:relative; background-color: transparent;">
@@ -217,7 +221,7 @@ with dataset:
                 """,
                 height=800,
         )
-
+        
 with describe_data:
     st.title("Data description")
     st.text("""
@@ -235,11 +239,8 @@ with describe_data:
     of our dataset using real tweets:""")
     data = pd.read_csv("multi_label_new.csv", encoding = "ISO-8859-1")
     answer.insert(0, ['Task', 'Hours per Day'])
-
-
     st.write(data.tail(10))
-    # pred = model.get_model_predictions("I hate james a lot")
-    # st.text(pred)
+
 
 #Writes the html/css/javascript: Mostly for the donut chart
 #ale changed this too
