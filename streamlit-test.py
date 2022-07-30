@@ -358,7 +358,7 @@ with mission:
 
 with dataset:
     sentence = st.text_input('Input your sentence here:')
-    color_sentence = color_word(sentence)
+    color_sentence = color_words(sentence)
     if sentence:
         answer = return_distribution(sentence)
         #st.write(answer)
