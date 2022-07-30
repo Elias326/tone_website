@@ -166,64 +166,63 @@ def generate_N_grams(text,ngram=1):
     return ans
 
 def count_category(tweet):
-
     model = TweetTagger(n_classes=6, n_warmup_steps=140, n_training_steps=703)
     loaded_model = TweetTagger(n_classes=6, n_warmup_steps=140, n_training_steps=703)
 
     loaded_model.load_state_dict(torch.load('pytorch_model.pth'))
     loaded_model.eval()
 
-  # define sentiment lists for each color
-  neutral_words = []
-  general_criticism_words = []
-  disability_shaming_words = []
-  racist_words = []
-  sexist_words = []
-  lgbtq_words = []
+    # define sentiment lists for each color
+    neutral_words = []
+    general_criticism_words = []
+    disability_shaming_words = []
+    racist_words = []
+    sexist_words = []
+    lgbtq_words = []
 
-  # remove punctutation
-  tweet = re.sub(r'[^\w\s]', '', tweet)
-  # dictionary storing the count of each sentiment detected from BERT (increment by )0.5 because we use bigrams
-  count_dict = {'neutral_count': 0, 'general_criticism_count': 0, 'disability_count': 0, 'racist_count': 0, 'sexist_count': 0, 'lgbtq_count': 0}
-  # first and last unigrams
-  unigrams = generate_N_grams(tweet, 1)
+    # remove punctutation
+    tweet = re.sub(r'[^\w\s]', '', tweet)
+    # dictionary storing the count of each sentiment detected from BERT (increment by )0.5 because we use bigrams
+    count_dict = {'neutral_count': 0, 'general_criticism_count': 0, 'disability_count': 0, 'racist_count': 0, 'sexist_count': 0, 'lgbtq_count': 0}
+    # first and last unigrams
+    unigrams = generate_N_grams(tweet, 1)
 
-  BERT_MODEL_NAME = 'bert-base-cased'
-  tokenizer = BertTokenizer.from_pretrained(BERT_MODEL_NAME)
+    BERT_MODEL_NAME = 'bert-base-cased'
+    tokenizer = BertTokenizer.from_pretrained(BERT_MODEL_NAME)
 
 
-  for unigram in unigrams:
-    encoding = tokenizer.encode_plus(
-    unigram,
-    add_special_tokens=True,
-    max_length=512,
-    return_token_type_ids=False,
-    padding="max_length",
-    return_attention_mask=True,
-    return_tensors='pt',
-    )
+    for unigram in unigrams:
+        encoding = tokenizer.encode_plus(
+        unigram,
+        add_special_tokens=True,
+        max_length=512,
+        return_token_type_ids=False,
+        padding="max_length",
+        return_attention_mask=True,
+        return_tensors='pt',
+        )
     _, test_prediction = loaded_model(encoding["input_ids"], encoding["attention_mask"])
     test_prediction = test_prediction.flatten().detach().numpy()
     # print(f'unigram: {unigram}, test_prediction: {test_prediction}')
     if test_prediction[0] > 0.5:
-      count_dict['neutral_count'] += 1
-      neutral_words.append(unigram)
+        count_dict['neutral_count'] += 1
+        neutral_words.append(unigram)
     elif test_prediction[1] > 0.5:
-      count_dict['general_criticism_count'] += 1
-      general_criticism_words.append(unigram)
+        count_dict['general_criticism_count'] += 1
+        general_criticism_words.append(unigram)
     elif test_prediction [2] > 0.5:
-      count_dict['disability_count'] += 1
-      disability_shaming_words.append(unigram)
+        count_dict['disability_count'] += 1
+        disability_shaming_words.append(unigram)
     elif test_prediction[3] > 0.5:
-      count_dict['racist_count'] += 1
-      racist_words.append(unigram)
+        count_dict['racist_count'] += 1
+        racist_words.append(unigram)
     elif test_prediction[4] > 0.5:
-      count_dict['sexist_count'] += 1
-      sexist_words.append(unigram)
+        count_dict['sexist_count'] += 1
+        sexist_words.append(unigram)
     elif test_prediction[5] > 0.5:
-      count_dict['lgbtq_count'] += 1
-      lgbtq_words.append(unigram)
-  return count_dict
+        count_dict['lgbtq_count'] += 1
+        lgbtq_words.append(unigram)
+    return count_dict
 
 
 def return_distribution(test_comment):
