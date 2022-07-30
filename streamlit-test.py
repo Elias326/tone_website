@@ -165,13 +165,9 @@ def generate_N_grams(text,ngram=1):
     ans=[' '.join(ngram) for ngram in temp]
     return ans
 
-def count_category(tweet):
-    model = TweetTagger(n_classes=6, n_warmup_steps=140, n_training_steps=703)
-    loaded_model = TweetTagger(n_classes=6, n_warmup_steps=140, n_training_steps=703)
-
-    loaded_model.load_state_dict(torch.load('pytorch_model.pth'))
-    loaded_model.eval()
-
+def count_category(tweet, loaded_model):
+    #model = TweetTagger(n_classes=6, n_warmup_steps=140, n_training_steps=703)
+    #loaded_model = TweetTagger(n_classes=6, n_warmup_steps=140, n_training_steps=703)
     # define sentiment lists for each color
     neutral_words = []
     general_criticism_words = []
@@ -202,7 +198,7 @@ def count_category(tweet):
         return_tensors='pt',
         )
     _, test_prediction = loaded_model(encoding["input_ids"], encoding["attention_mask"])
-    test_prediction = test_prediction.flatten().detach().numpy()
+    test_prediction = test_prediction.flatten().numpy()
     # print(f'unigram: {unigram}, test_prediction: {test_prediction}')
     if test_prediction[0] > 0.5:
         count_dict['neutral_count'] += 1
@@ -246,12 +242,12 @@ def return_distribution(test_comment):
     return_tensors='pt',
   )
     _, test_prediction = loaded_model(encoding["input_ids"], encoding["attention_mask"])
-    test_prediction = test_prediction.flatten().detach().numpy()
+    test_prediction = test_prediction.flatten().numpy()
     st.text(test_prediction)
 
     # multiply the original outputs by the term frequency (TF) of each category
 
-    count_dict = count_category(test_comment)
+    count_dict = count_category(test_comment, loaded_model)
 
 
     neutral_score = count_dict['neutral_count']*test_prediction[0]
