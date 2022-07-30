@@ -247,7 +247,7 @@ def return_distribution(test_comment):
   )
     _, test_prediction = loaded_model(encoding["input_ids"], encoding["attention_mask"])
     test_prediction = test_prediction.flatten().detach().numpy()
-    print(test_prediction)
+    st.text(test_prediction)
 
     # multiply the original outputs by the term frequency (TF) of each category
 
@@ -330,6 +330,7 @@ with dataset:
 #Writes the html/css/javascript: Mostly for the donut chart
 #ale changed this too
 with java:
+    st.text(answer)
     components.html(
         """
         <section>
