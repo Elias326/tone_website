@@ -137,6 +137,7 @@ def color_words(text):
   sexist_words = []
   lgbtq_words = []
 
+  loaded_model = TweetTagger(n_classes=6, n_warmup_steps=140, n_training_steps=703)
   BERT_MODEL_NAME = 'bert-base-cased'
   tokenizer = BertTokenizer.from_pretrained(BERT_MODEL_NAME)
 
@@ -157,7 +158,7 @@ def color_words(text):
     return_attention_mask=True,
     return_tensors='pt',
     )
-    _, test_prediction = trained_model(encoding["input_ids"], encoding["attention_mask"])
+    _, test_prediction = loaded_model(encoding["input_ids"], encoding["attention_mask"])
     test_prediction = test_prediction.flatten().numpy()
     # print(f'unigram: {unigram}, test_prediction: {test_prediction}')
     if test_prediction[0] > 0.5:
