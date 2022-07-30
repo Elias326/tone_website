@@ -63,6 +63,72 @@ import string
 # rcParams['figure.figsize'] = 12, 8
 # pl.seed_everything(RANDOM_SEED)
 
+# def color_words(text):
+#   # define sentiment lists for each color 
+#   neutral_words = []
+#   general_criticism_words = []
+#   disability_shaming_words = []
+#   racist_words = []
+#   sexist_words = []
+#   lgbtq_words = []
+
+#   # remove punctutation 
+#   # tweet = re.findall(r"[\w']+|[.,!?;]", tweet)
+#   tweet = re.sub(r'[^\w\s]', '', text)
+#   # dictionary storing the count of each sentiment detected from BERT (increment by )0.5 because we use bigrams  
+#   count_dict = {'neutral_count': 0, 'general_criticism_count': 0, 'disability_count': 0, 'racist_count': 0, 'sexist_count': 0, 'lgbtq_count': 0}
+#   # first and last unigrams 
+#   unigrams = generate_N_grams(tweet, 1) 
+#   for unigram in unigrams:
+#     encoding = tokenizer.encode_plus(
+#     unigram,
+#     add_special_tokens=True,
+#     max_length=512,
+#     return_token_type_ids=False,
+#     padding="max_length",
+#     return_attention_mask=True,
+#     return_tensors='pt',
+#     )
+#     _, test_prediction = trained_model(encoding["input_ids"], encoding["attention_mask"])
+#     test_prediction = test_prediction.flatten().numpy()
+#     # print(f'unigram: {unigram}, test_prediction: {test_prediction}')
+#     if test_prediction[0] > 0.5:
+#       count_dict['neutral_count'] += 1
+#       neutral_words.append(unigram)
+#     elif test_prediction[1] > 0.5:
+#       count_dict['general_criticism_count'] += 1
+#       general_criticism_words.append(unigram)
+#     elif test_prediction [2] > 0.5:
+#       count_dict['disability_count'] += 1
+#       disability_shaming_words.append(unigram)
+#     elif test_prediction[3] > 0.5:
+#       count_dict['racist_count'] += 1
+#       racist_words.append(unigram)
+#     elif test_prediction[4] > 0.5:
+#       count_dict['sexist_count'] += 1
+#       sexist_words.append(unigram)
+#     elif test_prediction[5] > 0.5:
+#       count_dict['lgbtq_count'] += 1
+#       lgbtq_words.append(unigram)
+
+#   # puncs = ['!','(',')',',','-','[',']','{','}',';',':','’', '”', '<' , '>','.','/','?','@','#','$','%','^','&','*','_','~']
+#   tweet = re.findall(r"[\w']+|[.,!?;]", text)
+
+
+#   for word in tweet:
+#     if word in lgbtq_words:
+#         print(f"\033[95m{word}\033[00m", end = ' ' )
+#     elif word in racist_words:
+#         print(f"\033[96m{word}\033[00m", end = ' ')
+#     elif word in disability_shaming_words:
+#         print(f"\033[92m{word}\033[00m", end = ' ')
+#     elif word in sexist_words:
+#         print(f"\033[93m{word}\033[00m", end = ' ')
+#     elif word in general_criticism_words:
+#         print(f"\033[91m{word}\033[00m", end =' ')
+#     else:
+#         print(word, end=' ')
+
 class TweetTagger(pl.LightningModule):
   def __init__(self, n_classes: int, n_training_steps=None, n_warmup_steps=None):
     super().__init__()
