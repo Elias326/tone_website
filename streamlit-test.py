@@ -167,6 +167,12 @@ def generate_N_grams(text,ngram=1):
 
 def count_category(tweet):
 
+    model = TweetTagger(n_classes=6, n_warmup_steps=140, n_training_steps=703)
+    loaded_model = TweetTagger(n_classes=6, n_warmup_steps=140, n_training_steps=703)
+
+    loaded_model.load_state_dict(torch.load('pytorch_model.pth'))
+    loaded_model.eval()
+
   # define sentiment lists for each color
   neutral_words = []
   general_criticism_words = []
@@ -222,9 +228,15 @@ def count_category(tweet):
 
 def return_distribution(test_comment):
 
+    model = TweetTagger(n_classes=6, n_warmup_steps=140, n_training_steps=703)
+    loaded_model = TweetTagger(n_classes=6, n_warmup_steps=140, n_training_steps=703)
+
+    loaded_model.load_state_dict(torch.load('pytorch_model.pth'))
+    loaded_model.eval()
+
     BERT_MODEL_NAME = 'bert-base-cased'
     tokenizer = BertTokenizer.from_pretrained(BERT_MODEL_NAME)
-    
+
     encoding = tokenizer.encode_plus(
     test_comment,
     add_special_tokens=True,
