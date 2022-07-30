@@ -198,7 +198,7 @@ def count_category(tweet, loaded_model):
         return_tensors='pt',
         )
         _, test_prediction = loaded_model(encoding["input_ids"], encoding["attention_mask"])
-        test_prediction = test_prediction.flatten().numpy()
+        test_prediction = test_prediction.flatten().detach().numpy()
     # print(f'unigram: {unigram}, test_prediction: {test_prediction}')
         if test_prediction[0] > 0.5:
             count_dict['neutral_count'] += 1
@@ -242,7 +242,7 @@ def return_distribution(test_comment):
     return_tensors='pt',
   )
     _, test_prediction = loaded_model(encoding["input_ids"], encoding["attention_mask"])
-    test_prediction = test_prediction.flatten().numpy()
+    test_prediction = test_prediction.flatten().detach().numpy()
     st.text(test_prediction)
 
     # multiply the original outputs by the term frequency (TF) of each category
