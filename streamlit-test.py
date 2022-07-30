@@ -137,6 +137,9 @@ def color_words(text):
   sexist_words = []
   lgbtq_words = []
 
+  BERT_MODEL_NAME = 'bert-base-cased'
+  tokenizer = BertTokenizer.from_pretrained(BERT_MODEL_NAME)
+
     # remove punctutation 
     # tweet = re.findall(r"[\w']+|[.,!?;]", tweet)
   tweet = re.sub(r'[^\w\s]', '', text)
