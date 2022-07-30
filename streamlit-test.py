@@ -181,6 +181,11 @@ def count_category(tweet):
   count_dict = {'neutral_count': 0, 'general_criticism_count': 0, 'disability_count': 0, 'racist_count': 0, 'sexist_count': 0, 'lgbtq_count': 0}
   # first and last unigrams
   unigrams = generate_N_grams(tweet, 1)
+
+  BERT_MODEL_NAME = 'bert-base-cased'
+  tokenizer = BertTokenizer.from_pretrained(BERT_MODEL_NAME)
+
+
   for unigram in unigrams:
     encoding = tokenizer.encode_plus(
     unigram,
