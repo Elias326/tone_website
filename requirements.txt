@@ -25,6 +25,6 @@ pylab-sdk
 transformers
 torchvision
 
-re
-string
+regex
+strings
 nltk
