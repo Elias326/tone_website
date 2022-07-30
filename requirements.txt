@@ -26,5 +26,4 @@ transformers
 torchvision
 
 regex
-strings
 nltk
