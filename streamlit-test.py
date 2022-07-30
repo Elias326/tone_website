@@ -221,6 +221,10 @@ def count_category(tweet):
 
 
 def return_distribution(test_comment):
+
+    BERT_MODEL_NAME = 'bert-base-cased'
+    tokenizer = BertTokenizer.from_pretrained(BERT_MODEL_NAME)
+    
     encoding = tokenizer.encode_plus(
     test_comment,
     add_special_tokens=True,
