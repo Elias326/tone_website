@@ -406,7 +406,7 @@ with dataset:
 #Writes the html/css/javascript: Mostly for the donut chart
 #ale changed this too
 with java:
-    st.text(color_sentence)
+    st.write(color_sentence)
     components.html(
         """
         <section>
