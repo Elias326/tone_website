@@ -24,3 +24,7 @@ pytorch-lightning
 pylab-sdk
 transformers
 torchvision
+
+re
+string
+nltk
