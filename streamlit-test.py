@@ -44,6 +44,8 @@ from torchmetrics.functional import f1_score
 from pytorch_lightning.callbacks import ModelCheckpoint, EarlyStopping
 from pytorch_lightning.loggers import TensorBoardLogger
 
+from nltk import ngrams
+
 # from sklearn.model_selection import train_test_split
 # from sklearn.metrics import classification_report, multilabel_confusion_matrix
 # import seaborn as sns
@@ -124,34 +126,127 @@ class TweetTagger(pl.LightningModule):
       )
     )
 
-def get_model_predictions(tweet):
-    model = TweetTagger(n_classes=6, n_warmup_steps=140, n_training_steps=703)
-    loaded_model = TweetTagger(n_classes=6,
-                           n_warmup_steps=140,
-                           n_training_steps=703)
+# def get_model_predictions(tweet):
+#     model = TweetTagger(n_classes=6, n_warmup_steps=140, n_training_steps=703)
+#     loaded_model = TweetTagger(n_classes=6,
+#                            n_warmup_steps=140,
+#                            n_training_steps=703)
+#
+#     #cwd = os.getcwd() # getting current working directory
+#     #print('This is the Current Directory: ')
+#     #print(cwd + '/pytorch_model.pth')
+#     loaded_model.load_state_dict(torch.load('pytorch_model.pth'))
+#     loaded_model.eval()
+#
+#     BERT_MODEL_NAME = 'bert-base-cased'
+#     tokenizer = BertTokenizer.from_pretrained(BERT_MODEL_NAME)
+#
+#     encoding = tokenizer.encode_plus(tweet, add_special_tokens=True, max_length=512,
+#     return_token_type_ids=False, padding="max_length", return_attention_mask=True,
+#     return_tensors='pt',)
+#
+#     _, test_prediction = loaded_model(encoding["input_ids"], encoding["attention_mask"])
+#     test_prediction = test_prediction.flatten().detach()
+#     prediction_values = [pred.item() for pred in test_prediction]
+#     LABEL_COLUMNS = ['Neutral', 'General Criticsm', 'Disability Shaming', 'Racial Prejudice',
+#                  'Sexism','LGBTQ+ Phobia']
+#
+#     result = []
+#     for label, prediction in zip(LABEL_COLUMNS, prediction_values):
+#         result.append([label, prediction])
+#
+#     return result
 
-    #cwd = os.getcwd() # getting current working directory
-    #print('This is the Current Directory: ')
-    #print(cwd + '/pytorch_model.pth')
-    loaded_model.load_state_dict(torch.load('pytorch_model.pth'))
-    loaded_model.eval()
+def generate_N_grams(text,ngram=1):
+    words=[word for word in text.split(" ")]
+    temp=zip(*[words[i:] for i in range(0,ngram)])
+    ans=[' '.join(ngram) for ngram in temp]
+    return ans
 
-    BERT_MODEL_NAME = 'bert-base-cased'
-    tokenizer = BertTokenizer.from_pretrained(BERT_MODEL_NAME)
+def count_category(tweet):
 
-    encoding = tokenizer.encode_plus(tweet, add_special_tokens=True, max_length=512,
-    return_token_type_ids=False, padding="max_length", return_attention_mask=True,
-    return_tensors='pt',)
+  # define sentiment lists for each color
+  neutral_words = []
+  general_criticism_words = []
+  disability_shaming_words = []
+  racist_words = []
+  sexist_words = []
+  lgbtq_words = []
 
+  # remove punctutation
+  tweet = re.sub(r'[^\w\s]', '', tweet)
+  # dictionary storing the count of each sentiment detected from BERT (increment by )0.5 because we use bigrams
+  count_dict = {'neutral_count': 0, 'general_criticism_count': 0, 'disability_count': 0, 'racist_count': 0, 'sexist_count': 0, 'lgbtq_count': 0}
+  # first and last unigrams
+  unigrams = generate_N_grams(tweet, 1)
+  for unigram in unigrams:
+    encoding = tokenizer.encode_plus(
+    unigram,
+    add_special_tokens=True,
+    max_length=512,
+    return_token_type_ids=False,
+    padding="max_length",
+    return_attention_mask=True,
+    return_tensors='pt',
+    )
     _, test_prediction = loaded_model(encoding["input_ids"], encoding["attention_mask"])
-    test_prediction = test_prediction.flatten().detach()
-    prediction_values = [pred.item() for pred in test_prediction]
-    LABEL_COLUMNS = ['Neutral', 'General Criticsm', 'Disability Shaming', 'Racial Prejudice',
-                 'Sexism','LGBTQ+ Phobia']
+    test_prediction = test_prediction.flatten().detach().numpy()
+    # print(f'unigram: {unigram}, test_prediction: {test_prediction}')
+    if test_prediction[0] > 0.5:
+      count_dict['neutral_count'] += 1
+      neutral_words.append(unigram)
+    elif test_prediction[1] > 0.5:
+      count_dict['general_criticism_count'] += 1
+      general_criticism_words.append(unigram)
+    elif test_prediction [2] > 0.5:
+      count_dict['disability_count'] += 1
+      disability_shaming_words.append(unigram)
+    elif test_prediction[3] > 0.5:
+      count_dict['racist_count'] += 1
+      racist_words.append(unigram)
+    elif test_prediction[4] > 0.5:
+      count_dict['sexist_count'] += 1
+      sexist_words.append(unigram)
+    elif test_prediction[5] > 0.5:
+      count_dict['lgbtq_count'] += 1
+      lgbtq_words.append(unigram)
+  return count_dict
+
+
+def return_distribution(test_comment):
+    encoding = tokenizer.encode_plus(
+    test_comment,
+    add_special_tokens=True,
+    max_length=512,
+    return_token_type_ids=False,
+    padding="max_length",
+    return_attention_mask=True,
+    return_tensors='pt',
+  )
+    _, test_prediction = loaded_model(encoding["input_ids"], encoding["attention_mask"])
+    test_prediction = test_prediction.flatten().detach().numpy()
+
+    # multiply the original outputs by the term frequency (TF) of each category
+
+    count_dict = count_category(test_comment)
+
+
+    neutral_score = count_dict['neutral_count']*test_prediction[0]
+    general_criticism_score = count_dict['general_criticism_count']*test_prediction[1]
+    weighted_disability_score = count_dict['disability_count']*test_prediction[2]
+    weighted_racist_score = count_dict['racist_count']*test_prediction[3]
+    weighted_sexist_score = count_dict['sexist_count']*test_prediction[4]
+    weighted_lgbtq_score = count_dict['lgbtq_count']*test_prediction[5]
+
+    #if neutral_score < 0.5 or general_criticism_score <0.5:
+    LABEL_COLUMNS = ['neutral', 'general criticsm', 'disability shaming', 'racial prejudice',
+                     'sexism','lgbtq+ phobia']
+
+    weighted_test_prediction = np.array([neutral_score, general_criticism_score, weighted_disability_score,weighted_racist_score,weighted_sexist_score,weighted_lgbtq_score])
 
     result = []
-    for label, prediction in zip(LABEL_COLUMNS, prediction_values):
-        result.append([label, prediction])
+    for label, prediction in zip(LABEL_COLUMNS, weighted_test_prediction):
+      result.append([label, prediction])
 
     return result
 
@@ -181,7 +276,7 @@ with mission:
 with dataset:
     sentence = st.text_input('Input your sentence here:')
     if sentence:
-        answer = get_model_predictions(sentence)
+        answer = return_distribution(sentence)
         #st.write(answer)
     else:
         answer = [['Neutral', 1.0], ['General Criticism', 0],
