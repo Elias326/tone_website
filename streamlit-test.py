@@ -358,6 +358,7 @@ with mission:
 
 with dataset:
     sentence = st.text_input('Input your sentence here:')
+    color_sentence = color_word(sentence)
     if sentence:
         answer = return_distribution(sentence)
         #st.write(answer)
@@ -401,6 +402,7 @@ with dataset:
 #Writes the html/css/javascript: Mostly for the donut chart
 #ale changed this too
 with java:
+    st.text(color_sentence)
     components.html(
         """
         <section>
