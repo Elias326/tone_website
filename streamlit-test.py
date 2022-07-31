@@ -186,15 +186,15 @@ def color_words(text):
   ans = " "
   for word in tweet:
     if word in lgbtq_words:
-      ans = ans + str(f"\033[95m{word}\033[00m", end = ' ' )
+      ans = ans + str(f"\033[95m{word}\033[00m")
     elif word in racist_words:
-      ans = ans + str(f"\033[96m{word}\033[00m", end = ' ')
+      ans = ans + str(f"\033[96m{word}\033[00m")
     elif word in disability_shaming_words:
-      ans = ans + str(f"\033[92m{word}\033[00m", end = ' ')
+      ans = ans + str(f"\033[92m{word}\033[00m")
     elif word in sexist_words:
-      ans = ans + str(f"\033[93m{word}\033[00m", end = ' ')
+      ans = ans + str(f"\033[93m{word}\033[00m")
     elif word in general_criticism_words:
-      ans = ans + str(f"\033[91m{word}\033[00m", end =' ')
+      ans = ans + str(f"\033[91m{word}\033[00m")
     else:
       #st.write(word, end=' ')
       ans = ans + str(word)
