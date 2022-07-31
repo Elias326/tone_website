@@ -365,7 +365,7 @@ with header:
 
 with mission:
     st.title("Mission Statement:")
-    st.markdown("__Promoting empathy among Twitter Users to reduce offensive content that harms the wellness of users__")
+    st.markdown("*Promoting empathy among Twitter Users to reduce offensive content that harms the wellness of users*")
 
 with box:
   st.subheader("Analyze your tweet!")
@@ -401,17 +401,17 @@ with dataset:
     Since we wanted to help users reflect deeper about the type of
     offensive language they may be putting out into the world, we decided
     to alter the dataset in the following ways:  
-    1. We began by creating the following columns: 'Neutral',
+    __1.__ We began by creating the following columns: 'Neutral',
     'General Criticism', 'Disability Shaming', 'Sexism','Racial Prejudice',
     and 'LGBTQ+ Phobic'.  
-    2. Since these new labels were not present in the original dataset,
+    __2.__ Since these new labels were not present in the original dataset,
     we needed to relabel using our new columns.  
-    3. Language is fundamentally complex and context is important to discern
+    __3.__ Language is fundamentally complex and context is important to discern
     more subtle offensive sentences and phrases. We wanted to be mindful,
     accurate, and consistant with our relabeling process. To do this we created
     a labeling methodology [link here] that each one of our members followed
     while manually reading and relabeling thousands of tweets.  
-    4. We then fed our newly relabeled into our PyTorch model where we train
+    __4.__ We then fed our newly relabeled into our PyTorch model where we train
     the machine learning algorithm to recognize hate speech and predict the
     type of offensive language.  
     Here's a preview of our dataset using real tweets: """, unsafe_allow_html=True)
@@ -492,9 +492,9 @@ with resource:
     st.write("[Science Direct - Sexism:](https://www.sciencedirect.com/topics/psychology/sexism)")
 
     st.subheader("Racial Prejudice:")
-    st.write("[United Nations Declaration on Race and Racial Prejudice:](https://www.ohchr.org/en/instruments-mechanisms/instruments/declaration-race-and-racial-prejudice")
+    st.write("[United Nations Declaration on Race and Racial Prejudice:](https://www.ohchr.org/en/instruments-mechanisms/instruments/declaration-race-and-racial-prejudice)")
     st.write("[U.S. Equal Employment Opportunity Commission Race/Color Discrimination:](https://www.eeoc.gov/racecolor-discrimination)")
-    st.write("[Alberta Civil Liberties Research Centre - Racism:] (https://www.aclrc.com/racism)")
+    st.write("[Alberta Civil Liberties Research Centre - Racism:](https://www.aclrc.com/racism)")
     st.write("[The National Association of School Psychologists (NASP) - Prejudice, Discrimination, and Racism:](https://www.nasponline.org/x26830.xml)")
     st.write("[University of Minnesota - Prejudice – Sociology - Publishing Services:](https://open.lib.umn.edu/sociology/chapter/10-3-prejudice/)")
 
