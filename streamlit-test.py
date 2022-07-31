@@ -189,18 +189,18 @@ def color_words(text):
   ans = " "
   for word in tweet:
     if word in lgbtq_words:
-      ans = ans + str(f"\033[95m{word}\033[00m")
+      ans = ans + str(f'<p style="color:Green;">{word}</p>') 
     elif word in racist_words:
-      ans = ans + str(f"\033[96m{word}\033[00m")
+      ans = ans + str(f'<p style="color:Blue;">{word}</p>') 
     elif word in disability_shaming_words:
-      ans = ans + str(f"\033[92m{word}\033[00m")
+      ans = ans + str(f'<p style="color:Red;">{word}</p>') 
     elif word in sexist_words:
-      ans = ans + str(f"\033[93m{word}\033[00m")
+      ans = ans + str(f'<p style="color:Yellow;">{word}</p>') 
     elif word in general_criticism_words:
-      ans = ans + str(f"\033[91m{word}\033[00m")
+      ans = ans + str(f'<p style="color:Orange;">{word}</p>') 
     else:
       #st.write(word, end=' ')
-      ans = ans + str(word)
+      ans = ans + str(word) + ' '
   return ans
 # def get_model_predictions(tweet):
 #     model = TweetTagger(n_classes=6, n_warmup_steps=140, n_training_steps=703)
@@ -414,6 +414,7 @@ with dataset:
 #ale changed this too
 with java:
     st.write(color_sentence)
+    st.markdown(color_sentence, unsafe_allow_html=True)
     components.html(
         """
         <section>
