@@ -349,6 +349,7 @@ def return_distribution(test_comment):
 
 header = st.container()
 java = st.container()
+box = st.container()
 mission = st.container()
 dataset = st.container()
 models = st.container()
@@ -366,6 +367,20 @@ with mission:
     st.markdown(new_title, unsafe_allow_html=True)
     st.title("Mission Statement:")
     st.text("Promoting empathy among Twitter Users to reduce offensive content that harms the wellness of users")
+
+with box:
+  sentence = st.text_input('Input your sentence here:')
+  color_sentence = color_words(sentence)
+  if sentence:
+      answer = return_distribution(sentence)
+      #st.write(answer)
+  else:
+      answer = [['Neutral', 1.0], ['General Criticism', 0],
+      ['Disability Shaming', 0], ['Sexism', 0],
+      ['Racial Prejudice', 0], ['LGBTQ+ Phobia', 0]
+      ]
+  answer.insert(0, ['Task', 'Hours per Day'])
+
 
 with dataset:
     # sentence = st.text_input('Input your sentence here:')
@@ -403,7 +418,7 @@ with dataset:
 
     Here's a preview of our dataset using real tweets:""")
     data = pd.read_csv("multi_label_new.csv", encoding = "ISO-8859-1")
-    #answer.insert(0, ['Task', 'Hours per Day'])
+    # answer.insert(0, ['Task', 'Hours per Day'])
 
 
     st.write(data.tail(10))
@@ -440,18 +455,6 @@ with java:
         """,
         height=300,
     )
-    sentence = st.text_input('Input your sentence here:')
-    color_sentence = color_words(sentence)
-    if sentence:
-        answer = return_distribution(sentence)
-        #st.write(answer)
-    else:
-        answer = [['Neutral', 1.0], ['General Criticism', 0],
-        ['Disability Shaming', 0], ['Sexism', 0],
-        ['Racial Prejudice', 0], ['LGBTQ+ Phobia', 0]
-        ]
-    answer.insert(0, ['Task', 'Hours per Day'])
-
 
 # Resources page #
 with resource:
