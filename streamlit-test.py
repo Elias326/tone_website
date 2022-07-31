@@ -393,6 +393,7 @@ with dataset:
     #     ['Disability Shaming', 0], ['Sexism', 0],
     #     ['Racial Prejudice', 0], ['LGBTQ+ Phobia', 0]
     #     ]
+    st.subheader("About the data")
     st.markdown("""The data is composed of about 24,000 tweets derived from the Kaggle Hate
     Speech and Offensive Language Dataset.The original dataset was conceived
     to be used to research hate speech such as racial, homophobic, sexist,
