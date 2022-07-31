@@ -362,6 +362,8 @@ with header:
     st.image(image, caption = "Toning down the bad vibes")
 
 with mission:
+    new_title = '<p style="font-family:sans-serif; color:Green; font-size: 42px;">New image</p>'
+    st.markdown(new_title, unsafe_allow_html=True)
     st.title("Mission Statement:")
     st.text("Promoting empathy among Twitter Users to reduce offensive content that harms the wellness of users")
 
