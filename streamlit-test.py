@@ -189,18 +189,18 @@ def color_words(text):
   ans = str('<p style="color:Black;">Words Highlight:</p>')
   for word in tweet:
     if word in lgbtq_words:
-      ans = ans + str(f'+ <p style="color:Green;">{word}</p>') 
+      ans = ans + str(f'<p style="color:Green;">{word}</p>') 
     elif word in racist_words:
-      ans = ans + str(f'+ <p style="color:Blue;">{word}</p>') 
+      ans = ans + str(f'<p style="color:Blue;">{word}</p>') 
     elif word in disability_shaming_words:
-      ans = ans + str(f'+ <p style="color:Red;">{word}</p>') 
+      ans = ans + str(f'<p style="color:Red;">{word}</p>') 
     elif word in sexist_words:
-      ans = ans + str(f'+ <p style="color:Yellow;">{word}</p>') 
+      ans = ans + str(f'<p style="color:Yellow;">{word}</p>') 
     elif word in general_criticism_words:
-      ans = ans + str(f'+ <p style="color:Orange;">{word}</p>') 
+      ans = ans + str(f'<p style="color:Orange;">{word}</p>') 
     else:
       #st.write(word, end=' ')
-      ans = ans + str(f'+ <p style="color:Black;">{word}</p>') + ' '
+      ans = ans + str(f'<p style="color:Black;">{word}</p>') + ' '
   return ans
 # def get_model_predictions(tweet):
 #     model = TweetTagger(n_classes=6, n_warmup_steps=140, n_training_steps=703)
@@ -349,10 +349,10 @@ def return_distribution(test_comment):
 
 header = st.container()
 mission = st.container()
+java = st.container()
 dataset = st.container()
 models = st.container()
 #ale changed this line
-java = st.container()
 resource = st.container()
 
 with header:
