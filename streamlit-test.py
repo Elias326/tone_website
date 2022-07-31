@@ -441,7 +441,7 @@ with dataset:
     # Here's a preview of our dataset using real tweets:""")
     data = pd.read_csv("multi_label_new.csv", encoding = "ISO-8859-1")
     # answer.insert(0, ['Task', 'Hours per Day'])
-    st.write(data.tail(15))
+    st.write(data.tail(50))
 
 
 #Writes the html/css/javascript: Mostly for the donut chart
