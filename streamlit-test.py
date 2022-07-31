@@ -403,7 +403,7 @@ with dataset:
 
     Here's a preview of our dataset using real tweets:""")
     data = pd.read_csv("multi_label_new.csv", encoding = "ISO-8859-1")
-    answer.insert(0, ['Task', 'Hours per Day'])
+    #answer.insert(0, ['Task', 'Hours per Day'])
 
 
     st.write(data.tail(10))
@@ -450,6 +450,8 @@ with java:
         ['Disability Shaming', 0], ['Sexism', 0],
         ['Racial Prejudice', 0], ['LGBTQ+ Phobia', 0]
         ]
+    answer.insert(0, ['Task', 'Hours per Day'])
+
 
 # Resources page #
 with resource:
