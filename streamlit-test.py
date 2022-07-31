@@ -357,8 +357,7 @@ models = st.container()
 resource = st.container()
 
 with header:
-    #Insert  Title
-    st.title("Welcome to our Capstone Project!")
+    #Insert Tone logo
     image = Image.open('tone_log.png')
     st.image(image, caption = "Toning down the bad vibes")
 
@@ -369,6 +368,7 @@ with mission:
     st.text("Promoting empathy among Twitter Users to reduce offensive content that harms the wellness of users")
 
 with box:
+  st.text("Analyze your tweet")
   sentence = st.text_input('Input your sentence here:')
   color_sentence = color_words(sentence)
   if sentence:
