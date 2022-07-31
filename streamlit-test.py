@@ -66,6 +66,9 @@ import string
 # rcParams['figure.figsize'] = 12, 8
 # pl.seed_everything(RANDOM_SEED)
 
+#DEFINE TOKENIZER
+BERT_MODEL_NAME = 'bert-base-cased'
+tokenizer = BertTokenizer.from_pretrained(BERT_MODEL_NAME)
 
 class TweetTagger(pl.LightningModule):
   def __init__(self, n_classes: int, n_training_steps=None, n_warmup_steps=None):
@@ -137,7 +140,7 @@ class TweetTagger(pl.LightningModule):
         interval='step'
       )
     )
-def color_words(text):
+def color_words(text,tokenizer):
   # define sentiment lists for each color 
   neutral_words = []
   general_criticism_words = []
@@ -147,8 +150,8 @@ def color_words(text):
   lgbtq_words = []
 
   loaded_model = TweetTagger(n_classes=6, n_warmup_steps=140, n_training_steps=703)
-  BERT_MODEL_NAME = 'bert-base-cased'
-  tokenizer = BertTokenizer.from_pretrained(BERT_MODEL_NAME)
+  # BERT_MODEL_NAME = 'bert-base-cased'
+  # tokenizer = BertTokenizer.from_pretrained(BERT_MODEL_NAME)
 
     # remove punctutation 
     # tweet = re.findall(r"[\w']+|[.,!?;]", tweet)
@@ -246,7 +249,7 @@ def generate_N_grams(text,ngram=1):
     ans=[' '.join(ngram) for ngram in temp]
     return ans
 
-def count_category(tweet, loaded_model):
+def count_category(tweet, loaded_model,tokenizer):
     #model = TweetTagger(n_classes=6, n_warmup_steps=140, n_training_steps=703)
     #loaded_model = TweetTagger(n_classes=6, n_warmup_steps=140, n_training_steps=703)
     # define sentiment lists for each color
@@ -264,8 +267,8 @@ def count_category(tweet, loaded_model):
     # first and last unigrams
     unigrams = generate_N_grams(tweet, 1)
 
-    BERT_MODEL_NAME = 'bert-base-cased'
-    tokenizer = BertTokenizer.from_pretrained(BERT_MODEL_NAME)
+    # BERT_MODEL_NAME = 'bert-base-cased'
+    # tokenizer = BertTokenizer.from_pretrained(BERT_MODEL_NAME)
 
 
     for unigram in unigrams:
@@ -302,7 +305,7 @@ def count_category(tweet, loaded_model):
     return count_dict
 
 
-def return_distribution(test_comment):
+def return_distribution(test_comment, tokenizer):
 
     model = TweetTagger(n_classes=6, n_warmup_steps=140, n_training_steps=703)
     loaded_model = TweetTagger(n_classes=6, n_warmup_steps=140, n_training_steps=703)
@@ -310,8 +313,8 @@ def return_distribution(test_comment):
     loaded_model.load_state_dict(torch.load('pytorch_model.pth'))
     loaded_model.eval()
 
-    BERT_MODEL_NAME = 'bert-base-cased'
-    tokenizer = BertTokenizer.from_pretrained(BERT_MODEL_NAME)
+    # BERT_MODEL_NAME = 'bert-base-cased'
+    # tokenizer = BertTokenizer.from_pretrained(BERT_MODEL_NAME)
 
     encoding = tokenizer.encode_plus(
     test_comment,
@@ -327,7 +330,7 @@ def return_distribution(test_comment):
 
     # multiply the original outputs by the term frequency (TF) of each category
 
-    count_dict = count_category(test_comment, loaded_model)
+    count_dict = count_category(test_comment, loaded_model,tokenizer)
 
 
     neutral_score = count_dict['neutral_count']*test_prediction[0]
@@ -377,9 +380,9 @@ with mission:
 with box:
   st.subheader("Analyze your tweet!")
   sentence = st.text_input('Input your tweet below:')
-  color_sentence = color_words(sentence)
+  color_sentence = color_words(sentence,tokenizer)
   if sentence:
-      answer = return_distribution(sentence)
+      answer = return_distribution(sentence,tokenizer)
       #st.write(answer)
   else:
       answer = [['Neutral', 1.0], ['General Criticism', 0],
