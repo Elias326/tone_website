@@ -364,10 +364,8 @@ with header:
 
 
 with mission:
-    new_title = '<p style="color:Green;">New image</p>'
-    st.markdown(new_title, unsafe_allow_html=True)
     st.title("Mission Statement:")
-    st.text("Promoting empathy among Twitter Users to reduce offensive content that harms the wellness of users")
+    st.markdown("Promoting empathy among Twitter Users to reduce offensive content that harms the wellness of users")
 
 with box:
   st.subheader("Analyze your tweet!")
@@ -488,7 +486,7 @@ with resource:
     community, gender equity, Disability awareness, and racial equality.""")
 
     st.write("Sexism:")
-    st.write("Britannica - Sexism Definition:[link](https://www.britannica.com/topic/sexism)")
+    st.write("[Britannica - Sexism Definition:](https://www.britannica.com/topic/sexism)")
     st.write("European Institute for Gender Equality - What is Sexism:[link] (https://eige.europa.eu/publications/sexism-at-work-handbook/part-1-understand/what-sexism)")
     st.write("Human Rights Channel - Sexism: See it. Name it. Stop it: [link] (https://human-rights-channel.coe.int/stop-sexism-en.html)")
     st.write("Science Direct - Sexism: [link] (https://www.sciencedirect.com/topics/psychology/sexism)")
