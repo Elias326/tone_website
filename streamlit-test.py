@@ -368,7 +368,7 @@ with mission:
     st.text("Promoting empathy among Twitter Users to reduce offensive content that harms the wellness of users")
 
 with box:
-  st.subheaer("Analyze your tweet!")
+  st.subheader("Analyze your tweet!")
   sentence = st.text_input('Input your tweet below:')
   color_sentence = color_words(sentence)
   if sentence:
