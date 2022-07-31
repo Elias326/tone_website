@@ -200,7 +200,7 @@ def color_words(text):
       ans = ans + str(f'<p style="color:Orange;">{word}</p>') 
     else:
       #st.write(word, end=' ')
-      ans = ans + str(word) + ' '
+      ans = ans + str(f'<p style="color:Orange;">{word}</p>') + ' '
   return ans
 # def get_model_predictions(tweet):
 #     model = TweetTagger(n_classes=6, n_warmup_steps=140, n_training_steps=703)
