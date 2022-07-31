@@ -365,7 +365,7 @@ with header:
 
 with mission:
     st.title("Mission Statement:")
-    st.markdown("Promoting empathy among Twitter Users to reduce offensive content that harms the wellness of users")
+    st.markdown("__Promoting empathy among Twitter Users to reduce offensive content that harms the wellness of users__")
 
 with box:
   st.subheader("Analyze your tweet!")
@@ -400,20 +400,20 @@ with dataset:
     later modify: hate_speech, offensive_language, and neither.
     Since we wanted to help users reflect deeper about the type of
     offensive language they may be putting out into the world, we decided
-    to alter the dataset in the following ways:
+    to alter the dataset in the following ways:  
     1. We began by creating the following columns: 'Neutral',
     'General Criticism', 'Disability Shaming', 'Sexism','Racial Prejudice',
-    and 'LGBTQ+ Phobic'.
+    and 'LGBTQ+ Phobic'.  
     2. Since these new labels were not present in the original dataset,
-    we needed to relabel using our new columns.
+    we needed to relabel using our new columns.  
     3. Language is fundamentally complex and context is important to discern
     more subtle offensive sentences and phrases. We wanted to be mindful,
     accurate, and consistant with our relabeling process. To do this we created
     a labeling methodology [link here] that each one of our members followed
-    while manually reading and relabeling thousands of tweets.
+    while manually reading and relabeling thousands of tweets.  
     4. We then fed our newly relabeled into our PyTorch model where we train
     the machine learning algorithm to recognize hate speech and predict the
-    type of offensive language.
+    type of offensive language.  
     Here's a preview of our dataset using real tweets: """, unsafe_allow_html=True)
     # st.text("""
     # The data is composed of about 24,000 tweets derived from the Kaggle Hate
@@ -485,22 +485,22 @@ with resource:
     resources we provided as a stepping stone to learn more about LGBTQ+
     community, gender equity, Disability awareness, and racial equality.""")
 
-    st.write("Sexism:")
+    st.subheader("Sexism:")
     st.write("[Britannica - Sexism Definition:](https://www.britannica.com/topic/sexism)")
-    st.write("European Institute for Gender Equality - What is Sexism:[link] (https://eige.europa.eu/publications/sexism-at-work-handbook/part-1-understand/what-sexism)")
-    st.write("Human Rights Channel - Sexism: See it. Name it. Stop it: [link] (https://human-rights-channel.coe.int/stop-sexism-en.html)")
-    st.write("Science Direct - Sexism: [link] (https://www.sciencedirect.com/topics/psychology/sexism)")
+    st.write("[European Institute for Gender Equality - What is Sexism:](https://eige.europa.eu/publications/sexism-at-work-handbook/part-1-understand/what-sexism)")
+    st.write("[Human Rights Channel - Sexism: See it. Name it. Stop it:](https://human-rights-channel.coe.int/stop-sexism-en.html)")
+    st.write("[Science Direct - Sexism:](https://www.sciencedirect.com/topics/psychology/sexism)")
 
-    st.write("Racial Prejudice:")
-    st.write("United Nations Declaration on Race and Racial Prejudice: [link] (https://www.ohchr.org/en/instruments-mechanisms/instruments/declaration-race-and-racial-prejudice")
-    st.write("U.S. Equal Employment Opportunity Commission Race/Color Discrimination: [link] (https://www.eeoc.gov/racecolor-discrimination)")
-    st.write("Alberta Civil Liberties Research Centre - Racism: [link] (https://www.aclrc.com/racism)")
-    st.write("The National Association of School Psychologists (NASP) - Prejudice, Discrimination, and Racism: [link] (https://www.nasponline.org/x26830.xml)")
-    st.write("University of Minnesota - Prejudice – Sociology - Publishing Services:[link] (https://open.lib.umn.edu/sociology/chapter/10-3-prejudice/)")
+    st.subheader("Racial Prejudice:")
+    st.write("[United Nations Declaration on Race and Racial Prejudice:](https://www.ohchr.org/en/instruments-mechanisms/instruments/declaration-race-and-racial-prejudice")
+    st.write("[U.S. Equal Employment Opportunity Commission Race/Color Discrimination:](https://www.eeoc.gov/racecolor-discrimination)")
+    st.write("[Alberta Civil Liberties Research Centre - Racism:] (https://www.aclrc.com/racism)")
+    st.write("[The National Association of School Psychologists (NASP) - Prejudice, Discrimination, and Racism:](https://www.nasponline.org/x26830.xml)")
+    st.write("[University of Minnesota - Prejudice – Sociology - Publishing Services:](https://open.lib.umn.edu/sociology/chapter/10-3-prejudice/)")
 
-    st.write("Disability")
-    st.write("The Lakeshore West Michigan’s How to respect people with disabilities: [link] (https://www.secondwavemedia.com/lakeshore/features/Persons_First_Language_respects_people_with_disabilities.aspx)")
-    st.write("Etiquette: Interacting with People with Disabilities: [link] (https://www.respectability.org/inclusion-toolkits/etiquette-interacting-with-people-with-disabilities/)")
-    st.write("Illinois Department of Human Services - A Guide to Interacting with People with Disabilities: [link] (https://www.dhs.state.il.us/page.aspx?item=32276)")
-    st.write("New York State Department of Health: Disability Etiquette Treat: Everyone with Respect: [link] (https://www.health.ny.gov/publications/0951.pdf)")
-    st.write("Capital Women’s Care’s Showing Acceptance and Respect for Those with Disabilities: [link] (https://www.cwcare.net/news/showing-acceptance-and-respect-those-disabilities)")
+    st.subheader("Disability")
+    st.write("[The Lakeshore West Michigan’s How to respect people with disabilities:](https://www.secondwavemedia.com/lakeshore/features/Persons_First_Language_respects_people_with_disabilities.aspx)")
+    st.write("[Etiquette: Interacting with People with Disabilities:](https://www.respectability.org/inclusion-toolkits/etiquette-interacting-with-people-with-disabilities/)")
+    st.write("[Illinois Department of Human Services - A Guide to Interacting with People with Disabilities:](https://www.dhs.state.il.us/page.aspx?item=32276)")
+    st.write("[New York State Department of Health: Disability Etiquette Treat: Everyone with Respect:](https://www.health.ny.gov/publications/0951.pdf)")
+    st.write("[Capital Women’s Care’s Showing Acceptance and Respect for Those with Disabilities:](https://www.cwcare.net/news/showing-acceptance-and-respect-those-disabilities)")
