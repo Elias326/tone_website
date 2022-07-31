@@ -187,7 +187,7 @@ def color_words(text):
   tweet = re.findall(r"[\w']+|[.,!?;]", text)
 
   response = ' '
-  ans = str('<style="color:Black;">Words Highlight:</style>')+ ' '
+  ans = str('<style="color:Black;">Words Highlight:</style>')+ '  '
   for word in tweet:
     if word in lgbtq_words:
       ans += str(f'<style="color:Green;">{word}</style>') + ' '
