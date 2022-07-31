@@ -360,7 +360,8 @@ with header:
     #Insert Tone logo
     image = Image.open('tone_log.png')
     st.image(image,width=700)
-    st.subheader("Team Tone: Toning Down Bad Vibes")
+    st.markdown("<h3 style='text-align: center; color: black;'>Toning Down Bad Vibes</h3>", unsafe_allow_html=True)
+
 
 with mission:
     new_title = '<p style="color:Green;">New image</p>'
