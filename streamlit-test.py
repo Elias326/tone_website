@@ -187,21 +187,21 @@ def color_words(text):
   tweet = re.findall(r"[\w']+|[.,!?;]", text)
 
   response = ' '
-  ans = str('<br style="color:Black;">Words Highlight:</br>')+ ' '
+  ans = str('<style="color:Black;">Words Highlight:</>')+ ' '
   for word in tweet:
     if word in lgbtq_words:
-      ans += str(f'<br style="color:Green;">{word}</br>') + ' '
+      ans += str(f'<style="color:Green;">{word}</>') + ' '
     elif word in racist_words:
-      ans += str(f'<br style="color:Blue;">{word}</br>') + ' '
+      ans += str(f'<style="color:Blue;">{word}</>') + ' '
     elif word in disability_shaming_words:
-      ans += str(f'<br style="color:Red;">{word}</br>') + ' '
+      ans += str(f'<style="color:Red;">{word}</>') + ' '
     elif word in sexist_words:
-      ans += str(f'<br style="color:Yellow;">{word}</br>') + ' '
+      ans += str(f'<style="color:Yellow;">{word}</>') + ' '
     elif word in general_criticism_words:
-      ans += str(f'<br style="color:Orange;">{word}</br>') + ' '
+      ans += str(f'<style="color:Orange;">{word}</>') + ' '
     else:
       #st.write(word, end=' ')
-      ans += str(f'<br style="color:Black;">{word}</br>') + ' '
+      ans += str(f'<style="color:Black;">{word}</>') + ' '
   return ans
 # def get_model_predictions(tweet):
 #     model = TweetTagger(n_classes=6, n_warmup_steps=140, n_training_steps=703)
