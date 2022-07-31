@@ -47,6 +47,22 @@ from pytorch_lightning.loggers import TensorBoardLogger
 from nltk import ngrams
 import re
 import string
+from annotated_text import annotated_text
+
+annotated_text(
+    "This ",
+    ("is", "verb"),
+    " some ",
+    ("annotated", "adj"),
+    ("text", "noun"),
+    " for those of ",
+    ("you", "pronoun"),
+    " who ",
+    ("like", "verb"),
+    " this sort of ",
+    ("thing", "noun"),
+    "."
+)
 
 # from sklearn.model_selection import train_test_split
 # from sklearn.metrics import classification_report, multilabel_confusion_matrix
