@@ -359,7 +359,7 @@ resource = st.container()
 with header:
     #Insert Tone logo
     image = Image.open('tone_log.png')
-    st.image(image, caption = "Toning down the bad vibes",width=300)
+    st.image(image, caption = "Toning down the bad vibes",width=600)
 
 with mission:
     new_title = '<p style="color:Green;">New image</p>'
