@@ -368,16 +368,16 @@ with mission:
     st.text("Promoting empathy among Twitter Users to reduce offensive content that harms the wellness of users")
 
 with dataset:
-    sentence = st.text_input('Input your sentence here:')
-    color_sentence = color_words(sentence)
-    if sentence:
-        answer = return_distribution(sentence)
-        #st.write(answer)
-    else:
-        answer = [['Neutral', 1.0], ['General Criticism', 0],
-        ['Disability Shaming', 0], ['Sexism', 0],
-        ['Racial Prejudice', 0], ['LGBTQ+ Phobia', 0]
-        ]
+    # sentence = st.text_input('Input your sentence here:')
+    # color_sentence = color_words(sentence)
+    # if sentence:
+    #     answer = return_distribution(sentence)
+    #     #st.write(answer)
+    # else:
+    #     answer = [['Neutral', 1.0], ['General Criticism', 0],
+    #     ['Disability Shaming', 0], ['Sexism', 0],
+    #     ['Racial Prejudice', 0], ['LGBTQ+ Phobia', 0]
+    #     ]
     st.text("""
     The data is composed of about 24,000 tweets derived from the Kaggle Hate
     Speech and Offensive Language Dataset.The original dataset was conceived
@@ -440,6 +440,16 @@ with java:
         """,
         height=300,
     )
+    sentence = st.text_input('Input your sentence here:')
+    color_sentence = color_words(sentence)
+    if sentence:
+        answer = return_distribution(sentence)
+        #st.write(answer)
+    else:
+        answer = [['Neutral', 1.0], ['General Criticism', 0],
+        ['Disability Shaming', 0], ['Sexism', 0],
+        ['Racial Prejudice', 0], ['LGBTQ+ Phobia', 0]
+        ]
 
 # Resources page #
 with resource:
