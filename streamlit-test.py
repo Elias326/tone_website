@@ -114,9 +114,15 @@ class TweetTagger(pl.LightningModule):
         predictions.append(out_predictions)
     labels = torch.stack(labels).int()
     predictions = torch.stack(predictions)
-    for i, name in enumerate(6):
-      class_roc_auc = auroc(predictions[:, i], labels[:, i])
-      self.logger.experiment.add_scalar(f"{name}_roc_auc/Train", class_roc_auc, self.current_epoch)
+    #CHANGING THIS 
+    # for i, name in enumerate(6):
+    #   class_roc_auc = auroc(predictions[:, i], labels[:, i])
+    #   self.logger.experiment.add_scalar(f"{name}_roc_auc/Train", class_roc_auc, self.current_epoch)
+    LABEL_COLUMNS = ['neutral', 'general criticsm', 'disability shaming', 'racial prejudice',
+                     'sexism','lgbtq+ phobia']
+    for i, name in enumerate(LABEL_COLUMNS):
+       class_roc_auc = auroc(predictions[:, i], labels[:, i])
+       self.logger.experiment.add_scalar(f"{name}_roc_auc/Train", class_roc_auc, self.current_epoch)
   def configure_optimizers(self):
     optimizer = AdamW(self.parameters(), lr=2e-5)
     scheduler = get_linear_schedule_with_warmup(
