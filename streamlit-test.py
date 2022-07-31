@@ -395,8 +395,7 @@ with dataset:
     #     ['Disability Shaming', 0], ['Sexism', 0],
     #     ['Racial Prejudice', 0], ['LGBTQ+ Phobia', 0]
     #     ]
-    st.text("""
-    The data is composed of about 24,000 tweets derived from the Kaggle Hate
+    st.markdown("""The data is composed of about 24,000 tweets derived from the Kaggle Hate
     Speech and Offensive Language Dataset.The original dataset was conceived
     to be used to research hate speech such as racial, homophobic, sexist,
     and general offensive language. It had the following columns that we
@@ -417,8 +416,31 @@ with dataset:
     4. We then fed our newly relabeled into our PyTorch model where we train
     the machine learning algorithm to recognize hate speech and predict the
     type of offensive language.
+    Here's a preview of our dataset using real tweets: """, unsafe_allow_html=True)
+    # st.text("""
+    # The data is composed of about 24,000 tweets derived from the Kaggle Hate
+    # Speech and Offensive Language Dataset.The original dataset was conceived
+    # to be used to research hate speech such as racial, homophobic, sexist,
+    # and general offensive language. It had the following columns that we
+    # later modify: hate_speech, offensive_language, and neither.
+    # Since we wanted to help users reflect deeper about the type of
+    # offensive language they may be putting out into the world, we decided
+    # to alter the dataset in the following ways:
+    # 1. We began by creating the following columns: 'Neutral',
+    # 'General Criticism', 'Disability Shaming', 'Sexism','Racial Prejudice',
+    # and 'LGBTQ+ Phobic'.
+    # 2. Since these new labels were not present in the original dataset,
+    # we needed to relabel using our new columns.
+    # 3. Language is fundamentally complex and context is important to discern
+    # more subtle offensive sentences and phrases. We wanted to be mindful,
+    # accurate, and consistant with our relabeling process. To do this we created
+    # a labeling methodology [link here] that each one of our members followed
+    # while manually reading and relabeling thousands of tweets.
+    # 4. We then fed our newly relabeled into our PyTorch model where we train
+    # the machine learning algorithm to recognize hate speech and predict the
+    # type of offensive language.
 
-    Here's a preview of our dataset using real tweets:""")
+    # Here's a preview of our dataset using real tweets:""")
     data = pd.read_csv("multi_label_new.csv", encoding = "ISO-8859-1")
     # answer.insert(0, ['Task', 'Hours per Day'])
     st.write(data.tail(15))
