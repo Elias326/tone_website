@@ -66,9 +66,6 @@ import string
 # rcParams['figure.figsize'] = 12, 8
 # pl.seed_everything(RANDOM_SEED)
 
-#DEFINE TOKENIZER
-BERT_MODEL_NAME = 'bert-base-cased'
-tokenizer = BertTokenizer.from_pretrained(BERT_MODEL_NAME)
 
 class TweetTagger(pl.LightningModule):
   def __init__(self, n_classes: int, n_training_steps=None, n_warmup_steps=None):
@@ -365,6 +362,10 @@ dataset = st.container()
 models = st.container()
 #ale changed this line
 resource = st.container()
+
+#DEFINE TOKENIZER
+BERT_MODEL_NAME = 'bert-base-cased'
+tokenizer = BertTokenizer.from_pretrained(BERT_MODEL_NAME)
 
 with header:
     #Insert Tone logo
