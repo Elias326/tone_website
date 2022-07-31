@@ -29,6 +29,8 @@ from pip._internal import main as pipmain
 # !pip install colored -q
 # !pip install -U -q PyDrive -q
 
+pipmain(['install', "annotated_text"])
+
 # Import Packages
 # import pandas as pd
 # import numpy as np
@@ -47,6 +49,7 @@ from pytorch_lightning.loggers import TensorBoardLogger
 from nltk import ngrams
 import re
 import string
+
 from annotated_text import annotated_text
 
 annotated_text(
