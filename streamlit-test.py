@@ -370,7 +370,7 @@ tokenizer = BertTokenizer.from_pretrained(BERT_MODEL_NAME)
 with header:
     #Insert Tone logo
     image = Image.open('tone_log.png')
-    st.image(image,width=700)
+    st.image(image,width=700,caption= "Toning Down Bad Vibes")
     st.markdown("<h3 style='text-align: center; color: black;'>Toning Down Bad Vibes</h3>", unsafe_allow_html=True)
 
 
@@ -379,7 +379,7 @@ with mission:
     st.markdown("*Promoting empathy among Twitter Users to reduce offensive content that harms the wellness of users*")
 
 with box:
-  st.subheader("Analyze your tweet!")
+  #st.subheader("Analyze your tweet!")
   sentence = st.text_input('Input your tweet below:')
   color_sentence = color_words(sentence,tokenizer)
   if sentence:
