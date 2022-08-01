@@ -461,6 +461,17 @@ with dataset:
 with java:
     # st.write(color_sentence)
     # st.markdown(color_sentence, unsafe_allow_html=True)
+    sentence = st.text_input('Input your tweet below:')
+    color_sentence = color_words(sentence,tokenizer)
+    if sentence:
+        answer = return_distribution(sentence,tokenizer)
+        #st.write(answer)
+    else:
+        answer = [['Neutral', 1.0], ['General Criticism', 0],
+        ['Disability Shaming', 0], ['Sexism', 0],
+        ['Racial Prejudice', 0], ['LGBTQ+ Phobia', 0]
+        ]
+    answer.insert(0, ['Task', 'Hours per Day'])
     components.html(
         """
         <section>
