@@ -473,7 +473,7 @@ with java:
               var data = google.visualization.arrayToDataTable(""" + str(answer) + """);
               var options = {
                 title: 'Tone Representation',
-                pieHole: 0.2,
+                pieHole: 0.8,
                 colors: ['#36d8ff', '#529ffc', '#31356e', '#66757f', '#5F9EA0', '#96DED1']
               };
               var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
