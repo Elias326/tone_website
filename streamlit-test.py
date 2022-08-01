@@ -371,7 +371,7 @@ with header:
     #Insert Tone logo
     image = Image.open('tone_log.png')
     st.image(image,width=700,caption= "Toning Down Bad Vibes")
-    st.markdown("<h3 style='text-align: center; color: black;'>Toning Down Bad Vibes</h3>", unsafe_allow_html=True)
+    #st.markdown("<h3 style='text-align: center; color: black;'>Toning Down Bad Vibes</h3>", unsafe_allow_html=True)
 
 
 with mission:
@@ -473,7 +473,7 @@ with java:
               var data = google.visualization.arrayToDataTable(""" + str(answer) + """);
               var options = {
                 title: 'Tone Representation',
-                pieHole: 0.4,
+                pieHole: 0.2,
                 colors: ['#36d8ff', '#529ffc', '#31356e', '#66757f', '#5F9EA0', '#96DED1']
               };
               var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
