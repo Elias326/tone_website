@@ -459,8 +459,8 @@ with dataset:
 #Writes the html/css/javascript: Mostly for the donut chart
 #ale changed this too
 with java:
-    st.write(color_sentence)
-    st.markdown(color_sentence, unsafe_allow_html=True)
+    # st.write(color_sentence)
+    # st.markdown(color_sentence, unsafe_allow_html=True)
     components.html(
         """
         <section>
