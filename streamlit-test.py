@@ -495,7 +495,7 @@ with java:
         </div>
         </section>
         """,
-        height=300,
+        height=350,
     )
 
 # Resources page #
