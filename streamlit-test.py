@@ -378,19 +378,19 @@ with mission:
     st.title("Mission Statement:")
     st.markdown("*Promoting empathy among Twitter Users to reduce offensive content that harms the wellness of users*")
 
-with box:
+# with box:
   #st.subheader("Analyze your tweet!")
-  sentence = st.text_input('Input your tweet below:')
-  color_sentence = color_words(sentence,tokenizer)
-  if sentence:
-      answer = return_distribution(sentence,tokenizer)
-      #st.write(answer)
-  else:
-      answer = [['Neutral', 1.0], ['General Criticism', 0],
-      ['Disability Shaming', 0], ['Sexism', 0],
-      ['Racial Prejudice', 0], ['LGBTQ+ Phobia', 0]
-      ]
-  answer.insert(0, ['Task', 'Hours per Day'])
+  # sentence = st.text_input('Input your tweet below:')
+  # color_sentence = color_words(sentence,tokenizer)
+  # if sentence:
+  #     answer = return_distribution(sentence,tokenizer)
+  #     #st.write(answer)
+  # else:
+  #     answer = [['Neutral', 1.0], ['General Criticism', 0],
+  #     ['Disability Shaming', 0], ['Sexism', 0],
+  #     ['Racial Prejudice', 0], ['LGBTQ+ Phobia', 0]
+  #     ]
+  # answer.insert(0, ['Task', 'Hours per Day'])
 
 
 with dataset:
@@ -461,7 +461,7 @@ with dataset:
 with java:
     # st.write(color_sentence)
     # st.markdown(color_sentence, unsafe_allow_html=True)
-    sentence = st.text_input('Input your tweet below:')
+    sentence = st.text_input('Input your tweet below:', key=111)
     color_sentence = color_words(sentence,tokenizer)
     if sentence:
         answer = return_distribution(sentence,tokenizer)
