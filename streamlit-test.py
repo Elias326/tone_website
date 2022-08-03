@@ -203,36 +203,7 @@ def color_words(text,tokenizer, loaded_model):
       #st.write(word, end=' ')
       ans += str(f'<h6 style="color:Black;">{word}</h6>') + ' '
   return ans
-# def get_model_predictions(tweet):
-#     model = TweetTagger(n_classes=6, n_warmup_steps=140, n_training_steps=703)
-#     loaded_model = TweetTagger(n_classes=6,
-#                            n_warmup_steps=140,
-#                            n_training_steps=703)
-#
-#     #cwd = os.getcwd() # getting current working directory
-#     #print('This is the Current Directory: ')
-#     #print(cwd + '/pytorch_model.pth')
-#     loaded_model.load_state_dict(torch.load('pytorch_model.pth'))
-#     loaded_model.eval()
-#
-#     BERT_MODEL_NAME = 'bert-base-cased'
-#     tokenizer = BertTokenizer.from_pretrained(BERT_MODEL_NAME)
-#
-#     encoding = tokenizer.encode_plus(tweet, add_special_tokens=True, max_length=512,
-#     return_token_type_ids=False, padding="max_length", return_attention_mask=True,
-#     return_tensors='pt',)
-#
-#     _, test_prediction = loaded_model(encoding["input_ids"], encoding["attention_mask"])
-#     test_prediction = test_prediction.flatten().detach()
-#     prediction_values = [pred.item() for pred in test_prediction]
-#     LABEL_COLUMNS = ['Neutral', 'General Criticsm', 'Disability Shaming', 'Racial Prejudice',
-#                  'Sexism','LGBTQ+ Phobia']
-#
-#     result = []
-#     for label, prediction in zip(LABEL_COLUMNS, prediction_values):
-#         result.append([label, prediction])
-#
-#     return result
+
 
 def generate_N_grams(text,ngram=1):
     words=[word for word in text.split(" ")]
@@ -342,8 +313,6 @@ def return_distribution(test_comment, tokenizer, loaded_model):
 
 ###########################
 
-
-
 header = st.container()
 java = st.container()
 box = st.container()
@@ -375,32 +344,8 @@ with mission:
     st.title("Mission Statement:")
     st.markdown("*Promoting empathy among Twitter Users to reduce offensive content that harms the wellness of users*")
 
-# with box:
-  #st.subheader("Analyze your tweet!")
-  # sentence = st.text_input('Input your tweet below:')
-  # color_sentence = color_words(sentence,tokenizer)
-  # if sentence:
-  #     answer = return_distribution(sentence,tokenizer)
-  #     #st.write(answer)
-  # else:
-  #     answer = [['Neutral', 1.0], ['General Criticism', 0],
-  #     ['Disability Shaming', 0], ['Sexism', 0],
-  #     ['Racial Prejudice', 0], ['LGBTQ+ Phobia', 0]
-  #     ]
-  # answer.insert(0, ['Task', 'Hours per Day'])
-
 
 with dataset:
-    # sentence = st.text_input('Input your sentence here:')
-    # color_sentence = color_words(sentence)
-    # if sentence:
-    #     answer = return_distribution(sentence)
-    #     #st.write(answer)
-    # else:
-    #     answer = [['Neutral', 1.0], ['General Criticism', 0],
-    #     ['Disability Shaming', 0], ['Sexism', 0],
-    #     ['Racial Prejudice', 0], ['LGBTQ+ Phobia', 0]
-    #     ]
     st.subheader("About the data")
     st.markdown("""The data is composed of about 24,000 tweets derived from the Kaggle Hate
     Speech and Offensive Language Dataset.The original dataset was conceived
@@ -434,8 +379,8 @@ with dataset:
 #Writes the html/css/javascript: Mostly for the donut chart
 #ale changed this too
 with java:
-    # st.write(color_sentence)
-    # st.markdown(color_sentence, unsafe_allow_html=True)
+    st.write(color_sentence)
+    st.markdown(color_sentence, unsafe_allow_html=True)
     sentence = st.text_input('Input your tweet below:', key=111)
     color_sentence = color_words(sentence,tokenizer,loaded_model)
     if sentence:
