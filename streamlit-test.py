@@ -186,7 +186,7 @@ def color_words(text,tokenizer, loaded_model):
   # puncs = ['!','(',')',',','-','[',']','{','}',';',':','’', '”', '<' , '>','.','/','?','@','#','$','%','^','&','*','_','~']
   tweet = re.findall(r"[\w']+|[.,!?;]", text)
 
-  response = ' '
+
   ans = str('<p style="color:Black;">Words Highlight:</p>')+ '  '
   for word in tweet:
     if word in lgbtq_words:
@@ -379,7 +379,7 @@ with dataset:
 #Writes the html/css/javascript: Mostly for the donut chart
 #ale changed this too
 with java:
-    color_sentence = color_words(okenizer,loaded_model,sentence='Lebron James throws like a retarded bitch')
+    color_sentence = color_words(tokenizer,loaded_model,sentence='Lebron James throws like a retarded bitch')
     st.write(color_sentence)
     st.markdown(color_sentence, unsafe_allow_html=True)
     sentence = st.text_input('Input your tweet below:', key=111)
