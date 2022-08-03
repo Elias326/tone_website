@@ -379,10 +379,10 @@ with dataset:
 #Writes the html/css/javascript: Mostly for the donut chart
 #ale changed this too
 with java:
+    color_sentence = color_words(sentence,tokenizer,loaded_model)
     st.write(color_sentence)
     st.markdown(color_sentence, unsafe_allow_html=True)
     sentence = st.text_input('Input your tweet below:', key=111)
-    color_sentence = color_words(sentence,tokenizer,loaded_model)
     if sentence:
         answer = return_distribution(sentence,tokenizer,loaded_model)
         #st.write(answer)
