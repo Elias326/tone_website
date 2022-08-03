@@ -379,7 +379,7 @@ with dataset:
 #Writes the html/css/javascript: Mostly for the donut chart
 #ale changed this too
 with java:
-    color_sentence = color_words(sentence,tokenizer,loaded_model)
+    color_sentence = color_words(okenizer,loaded_model,sentence='Lebron James throws like a retarded bitch')
     st.write(color_sentence)
     st.markdown(color_sentence, unsafe_allow_html=True)
     sentence = st.text_input('Input your tweet below:', key=111)
