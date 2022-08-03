@@ -137,8 +137,8 @@ class TweetTagger(pl.LightningModule):
         interval='step'
       )
     )
-def color_words(text,tokenizer):
-  # define sentiment lists for each color 
+def color_words(text,tokenizer, loaded_model):
+  # define sentiment lists for ea, ch color 
   neutral_words = []
   general_criticism_words = []
   disability_shaming_words = []
@@ -146,7 +146,7 @@ def color_words(text,tokenizer):
   sexist_words = []
   lgbtq_words = []
 
-  loaded_model = TweetTagger(n_classes=6, n_warmup_steps=140, n_training_steps=703)
+  # loaded_model = TweetTagger(n_classes=6, n_warmup_steps=140, n_training_steps=703)
   # BERT_MODEL_NAME = 'bert-base-cased'
   # tokenizer = BertTokenizer.from_pretrained(BERT_MODEL_NAME)
 
@@ -302,16 +302,12 @@ def count_category(tweet, loaded_model,tokenizer):
     return count_dict
 
 
-def return_distribution(test_comment, tokenizer):
+def return_distribution(test_comment, tokenizer, loaded_model):
 
-    model = TweetTagger(n_classes=6, n_warmup_steps=140, n_training_steps=703)
-    loaded_model = TweetTagger(n_classes=6, n_warmup_steps=140, n_training_steps=703)
+    # loaded_model = TweetTagger(n_classes=6, n_warmup_steps=140, n_training_steps=703)
 
-    loaded_model.load_state_dict(torch.load('pytorch_model.pth'))
-    loaded_model.eval()
-
-    # BERT_MODEL_NAME = 'bert-base-cased'
-    # tokenizer = BertTokenizer.from_pretrained(BERT_MODEL_NAME)
+    # loaded_model.load_state_dict(torch.load('pytorch_model.pth'))
+    # loaded_model.eval()
 
     encoding = tokenizer.encode_plus(
     test_comment,
@@ -366,6 +362,13 @@ resource = st.container()
 #DEFINE TOKENIZER
 BERT_MODEL_NAME = 'bert-base-cased'
 tokenizer = BertTokenizer.from_pretrained(BERT_MODEL_NAME)
+
+#Load models
+model = TweetTagger(n_classes=6, n_warmup_steps=140, n_training_steps=703)
+loaded_model = TweetTagger(n_classes=6, n_warmup_steps=140, n_training_steps=703)
+
+loaded_model.load_state_dict(torch.load('pytorch_model.pth'))
+loaded_model.eval()
 
 with header:
     #Insert Tone logo
