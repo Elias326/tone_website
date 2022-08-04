@@ -191,17 +191,17 @@ def color_words(text,tokenizer, loaded_model):
   for word in tweet:
     if word in lgbtq_words:
       #sans-serif;font-size: 2em
-      ans += str(f'<span class="lgbtq", style="color:Black;>{word}</span>') + ' '
+      ans += str(f'<span class="lgbtq", style="color:Black;">{word}</span>') + ' '
     elif word in racist_words:
-      ans += str(f'<span class="racial_prejudice", style="color:Black;>{word}</span>') + ' '
+      ans += str(f'<span class="racial_prejudice", style="color:Black;">{word}</span>') + ' '
     elif word in disability_shaming_words:
-      ans += str(f'<span class="disability", style="color:Black;>{word}</span>') + ' '
+      ans += str(f'<span class="disability", style="color:Black;">{word}</span>') + ' '
     elif word in sexist_words:
-      ans += str(f'<span class="sexism", style="color:Black;>{word}</span>') + ' '
+      ans += str(f'<span class="sexism", style="color:Black;">{word}</span>') + ' '
     elif word in general_criticism_words:
-      ans += str(f'<span class="general", style="color:Black;>{word}</span>') + ' '
+      ans += str(f'<span class="general", style="color:Black;">{word}</span>') + ' '
     else:
-      ans += str(f'<span, style="color:Black;>{word}</span>') + ' '
+      ans += str(f'<span, style="color:Black;">{word}</span>') + ' '
   return ans
 
 
@@ -423,10 +423,10 @@ with java:
     .highlight {
       background-color: tomato;
     }
+
     .sexism {
       background-color: aqua;
     }
-
 
     .lgbtq {
       background-color: red;
