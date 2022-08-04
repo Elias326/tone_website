@@ -187,7 +187,8 @@ def color_words(text,tokenizer, loaded_model):
   tweet = re.findall(r"[\w']+|[.,!?;]", text)
 
 
-  ans = str('<p class="highlight", style="color:Black;font-family:sans-serif"> Tweet Diagnosis </p>')+ '  '
+  #ans = str('<p class="highlight", style="color:Black;font-family:sans-serif"> Tweet Diagnosis </p>')+ '  '
+  ans = ' '
   for word in tweet:
     if word in lgbtq_words:
       #sans-serif;font-size: 2em
