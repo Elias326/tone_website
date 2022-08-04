@@ -428,27 +428,27 @@ with java:
 
     .sexism {
       background-color: cadetblue;
-      font-size: 1.5em;
+      font-size: 1.4em;
     }
 
     .lgbtq {
       background-color: rgb(150,222,209);
-      font-size: 1.5em;
+      font-size: 1.4em;
       
     }
 
     .disability {
       background-color: darkslateblue;
-      font-size: 1.5em;
+      font-size: 1.4em;
     }
 
     .racial_prejudice {
       background-color: slategray;
-      font-size: 1.5em;
+      font-size: 1.4em;
     }
 
     .neutral {
-      font-size: 1.5em;
+      font-size: 1.4em;
     }
 
     </style>
