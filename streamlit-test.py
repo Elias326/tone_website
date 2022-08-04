@@ -422,28 +422,28 @@ with java:
 
     .highlight {
       background-color: tomato;
-      font-family:sans-serif;
+      font-family:serif;
     }
 
     .sexism {
       background-color: cadetblue;
-      font-family:sans-serif;
+      font-family:serif;
     }
 
     .lgbtq {
       background-color: lightgreen;
-      font-family:sans-serif;
+      font-family:serif;
       
     }
 
     .disability {
       background-color: darkslateblue;
-      font-family:sans-serif;
+      font-family:serif;
     }
 
     .racial_prejudice {
       background-color: slategray;
-      font-family:sans-serif;
+      font-family:serif;
     }
 
     </style>
