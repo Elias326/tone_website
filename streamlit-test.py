@@ -419,6 +419,7 @@ with java:
     )
     components.html(""" 
     <style>
+
     .highlight {
       background-color: tomato;
     }
@@ -431,7 +432,7 @@ with java:
     }
 
     .lgbtq {
-      background-color: azure;
+      background-color: red;
     }
 
     .disability {
