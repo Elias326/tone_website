@@ -201,7 +201,7 @@ def color_words(text,tokenizer, loaded_model):
     elif word in general_criticism_words:
       ans += str(f'<span class="general", style="color:Black;">{word}</span>') + ' '
     else:
-      ans += str(f'<span, style="color:Black;">{word}</span>') + ' '
+      ans += str(f'<span class="neutral", style="color:Black;">{word}</span>') + ' '
   return ans
 
 
@@ -447,6 +447,11 @@ with java:
 
     .racial_prejudice {
       background-color: slategray;
+      font-family:serif;
+      font-size: 1.5em;
+    }
+
+    .neutral {
       font-family:serif;
       font-size: 1.5em;
     }
