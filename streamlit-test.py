@@ -425,19 +425,19 @@ with java:
     }
 
     .sexism {
-      background-color: aqua;
+      background-color: cadetblue;
     }
 
     .lgbtq {
-      background-color: red;
+      background-color: torquoisegreen;
     }
 
     .disability {
-      background-color: blue;
+      background-color: darkslateblue;
     }
 
     .racial_prejudice {
-      background-color: green;
+      background-color: slategray;
     }
 
     </style>
