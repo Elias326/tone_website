@@ -427,7 +427,7 @@ with java:
     }
 
     .sexism {
-      background-color: yellow;
+      background-color: aqua;
 
     }
 
@@ -437,7 +437,7 @@ with java:
     }
 
     .lgbtq {
-      bakcground-color: green;
+      bakcground-color: azure;
 
     }
 
