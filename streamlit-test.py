@@ -427,12 +427,12 @@ with java:
     }
 
     .sexism {
-      background-color: #66757f;
+      background-color: yellow;
 
     }
 
     .disability {
-      bakcground-color: #31356e;
+      bakcground-color: blue;
 
     }
 
