@@ -419,7 +419,7 @@ with java:
     components.html(""" 
     <p> """ + str(color_words(sentence,tokenizer,loaded_model)) + """ </p>
     """
-    ,height = 100
+    ,height = 400
     )
 
 
