@@ -193,7 +193,7 @@ def color_words(text,tokenizer, loaded_model):
       #sans-serif;font-size: 2em
       ans += str(f'<span class="lgbtq",style="color:Green;">{word}</span>') + ' '
     elif word in racist_words:
-      ans += str(f'<span class="racist",style="color:Blue;">{word}</span>') + ' '
+      ans += str(f'<span class="racial_prejudice",style="color:Blue;">{word}</span>') + ' '
     elif word in disability_shaming_words:
       #31356e for disability
       ans += str(f'<span class="disability",style="color:Yellow;">{word}</span>') + ' '
@@ -427,11 +427,23 @@ with java:
     }
 
     .sexism {
-      background-color: pink;
+      background-color: #66757f;
+      font-size: 2em;
     }
 
     .disability {
-      bakcground-color: blue;
+      bakcground-color: #31356e;
+      font-size: 2em;
+    }
+
+    .lgbtq {
+      bakcground-color: green;
+      font-size: 2em;
+    }
+
+    .racial_prejudice {
+      bakcground-color: green;
+      font-size: 2em;
     }
     
     </style>
