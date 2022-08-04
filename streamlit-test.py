@@ -418,7 +418,7 @@ with java:
         height=350,
     )
     components.html(""" 
-    <p> """ + str(color_words(tokenizer,loaded_model,text=sentence) + """ </p>
+    <p> """ + str(color_words(tokenizer,loaded_model,text=sentence)) + """ </p>
     """
     ,height = 100
     )
