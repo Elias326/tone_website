@@ -433,7 +433,7 @@ with java:
     }
 
     .lgbtq {
-      background-color: PaleTurquoise;
+      background-color: #96DED1
       font-family:serif;
       font-size: 1.5em;
       
