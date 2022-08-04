@@ -418,7 +418,7 @@ with java:
         height=350,
     )
     components.html(""" 
-    <p> hi </p>
+    <p> """ + str(answer) + """ </p>
     """
     ,height = 100
     )
