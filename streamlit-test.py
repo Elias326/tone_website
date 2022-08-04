@@ -417,6 +417,11 @@ with java:
         """,
         height=350,
     )
+    components.html(""" 
+    <p> hi </p>
+    """
+    ,height = 100
+    )
 
 
 # Resources page #
