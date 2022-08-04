@@ -425,25 +425,23 @@ with java:
     .sexism {
       background-color: aqua;
     }
+
     .racial_prejudice {
-      bakcground-color: green;
-    }
-    .lgbtq {
-      bakcground-color: azure;
+      background-color: green;
     }
 
+    .lgbtq {
+      background-color: azure;
+    }
 
     .disability {
-      bakcground-color: blue;
+      background-color: blue;
     }
 
-    .racial_prejudice {
-      bakcground-color: green;
-    }
     </style>
     <p> """ + str(color_words(sentence,tokenizer,loaded_model)) + """ </p>
     """
-    ,height = 400
+    ,height = 200
     )
 
 
