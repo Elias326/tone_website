@@ -191,19 +191,17 @@ def color_words(text,tokenizer, loaded_model):
   for word in tweet:
     if word in lgbtq_words:
       #sans-serif;font-size: 2em
-      ans += str(f'<span class="lgbtq",style="color:Green;">{word}</span>') + ' '
+      ans += str(f'<span class="lgbtq">{word}</span>') + ' '
     elif word in racist_words:
-      ans += str(f'<span class="racial_prejudice",style="color:Blue;">{word}</span>') + ' '
+      ans += str(f'<span class="racial_prejudice">{word}</span>') + ' '
     elif word in disability_shaming_words:
-      #31356e for disability
-      ans += str(f'<span class="disability",style="color:Yellow;">{word}</span>') + ' '
+      ans += str(f'<span class="disability">{word}</span>') + ' '
     elif word in sexist_words:
-      #66757f for sexism
-      ans += str(f'<span class="sexism",style="color:Red;">{word}</span>') + ' '
+      ans += str(f'<span class="sexism">{word}</span>') + ' '
     elif word in general_criticism_words:
-      ans += str(f'<span class="general",style="color:Orange;">{word}</span>') + ' '
+      ans += str(f'<span class="general">{word}</span>') + ' '
     else:
-      ans += str(f'<span style="color:Black;">{word}</span>') + ' '
+      ans += str(f'<span>{word}</span>') + ' '
   return ans
 
 
@@ -425,6 +423,10 @@ with java:
       background-color: tomato;
     }
 
+    .lgbtq {
+      bakcground-color: azure;
+    }
+
     .sexism {
       background-color: aqua;
     }
@@ -433,9 +435,6 @@ with java:
       bakcground-color: blue;
     }
 
-    .lgbtq {
-      bakcground-color: azure;
-    }
 
     .racial_prejudice {
       bakcground-color: green;
