@@ -429,7 +429,7 @@ with java:
     }
 
     .lgbtq {
-      background-color: torquoisegreen;
+      background-color: aquamarine;
     }
 
     .disability {
@@ -443,7 +443,7 @@ with java:
     </style>
     <p> """ + str(color_words(sentence,tokenizer,loaded_model)) + """ </p>
     """
-    ,height = 200
+    ,height = 100
     )
 
 
