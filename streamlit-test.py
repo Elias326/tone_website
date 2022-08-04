@@ -164,22 +164,22 @@ def color_words(text,tokenizer, loaded_model):
     _, test_prediction = loaded_model(encoding["input_ids"], encoding["attention_mask"])
     test_prediction = test_prediction.flatten().detach().numpy()
     # print(f'unigram: {unigram}, test_prediction: {test_prediction}')
-    if test_prediction[0] > 0.5:
+    if test_prediction[0] > 0.3:
       count_dict['neutral_count'] += 1
       neutral_words.append(unigram)
-    elif test_prediction[1] > 0.5:
+    elif test_prediction[1] > 0.3:
       count_dict['general_criticism_count'] += 1
       general_criticism_words.append(unigram)
-    elif test_prediction [2] > 0.5:
+    elif test_prediction [2] > 0.3:
       count_dict['disability_count'] += 1
       disability_shaming_words.append(unigram)
-    elif test_prediction[3] > 0.5:
+    elif test_prediction[3] > 0.3:
       count_dict['racist_count'] += 1
       racist_words.append(unigram)
-    elif test_prediction[4] > 0.5:
+    elif test_prediction[4] > 0.3:
       count_dict['sexist_count'] += 1
       sexist_words.append(unigram)
-    elif test_prediction[5] > 0.5:
+    elif test_prediction[5] > 0.3:
       count_dict['lgbtq_count'] += 1
       lgbtq_words.append(unigram)
 
