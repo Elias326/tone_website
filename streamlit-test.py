@@ -423,37 +423,37 @@ with java:
 
     .highlight {
       background-color: black;
-      font-family: 'Helvetica', 'Arial', sans-serif;
+      font-family:serif;
       font-size: .3em;
     }
 
     .sexism {
       background-color: cadetblue;
-      font-family: 'Helvetica', 'Arial', sans-serif;
+      font-family:serif;
       font-size: 1.5em;
     }
 
     .lgbtq {
       background-color: rgb(150,222,209);
-      font-family: 'Helvetica', 'Arial', sans-serif;
+      font-family:serif;
       font-size: 1.5em;
       
     }
 
     .disability {
       background-color: darkslateblue;
-      font-family: 'Helvetica', 'Arial', sans-serif;
+      font-family:serif;
       font-size: 1.5em;
     }
 
     .racial_prejudice {
       background-color: slategray;
-      font-family: 'Helvetica', 'Arial', sans-serif;
+      font-family:serif;
       font-size: 1.5em;
     }
 
     .neutral {
-      font-family: 'Helvetica', 'Arial', sans-serif;
+      font-family:serif;
       font-size: 1.5em;
     }
 
