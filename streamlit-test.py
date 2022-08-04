@@ -405,7 +405,7 @@ with java:
               var options = {
                 title: 'Tone Representation',
                 pieHole: 0.55,
-                colors: ['#36d8ff', '#529ffc', '#31356e', '#66757f', '#5F9EA0', '#96DED1']
+                colors: ['#36d8ff', '#529ffc', '#31356e', '#66757f', '#4169E1', '#96DED1']
               };
               var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
               chart.draw(data, options);
@@ -446,7 +446,7 @@ with java:
     }
 
     .racial_prejudice {
-      background-color: royalblue;
+      background-color: slategray;
       font-family:serif;
       font-size: 1.5em;
     }
