@@ -200,7 +200,6 @@ def color_words(text,tokenizer, loaded_model):
     elif word in general_criticism_words:
       ans += str(f'<h6 style="color:Orange;">{word}</h6>') + ' '
     else:
-      #st.write(word, end=' ')
       ans += str(f'<h6 style="color:Black;">{word}</h6>') + ' '
   return ans
 
@@ -418,7 +417,7 @@ with java:
         height=350,
     )
     components.html(""" 
-    <p> """ + str(color_words(tokenizer,loaded_model,text=sentence)) + """ </p>
+    <p> """ + str(color_words(sentence,tokenizer,loaded_model)) + """ </p>
     """
     ,height = 100
     )
