@@ -422,7 +422,9 @@ with java:
     .highlight {
       background-color: tomato;
     }
-
+    .sexism {
+      background-color: aqua;
+    }
     .racial_prejudice {
       bakcground-color: green;
     }
@@ -430,14 +432,10 @@ with java:
       bakcground-color: azure;
     }
 
-    .sexism {
-      background-color: aqua;
-    }
 
     .disability {
       bakcground-color: blue;
     }
-
 
     .racial_prejudice {
       bakcground-color: green;
