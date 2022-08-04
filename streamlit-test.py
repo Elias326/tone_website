@@ -423,38 +423,38 @@ with java:
     .highlight {
       background-color: tomato;
       font-family:serif;
-      font-size: 2em;
+      font-size: 1.5em;
     }
 
     .sexism {
       background-color: cadetblue;
       font-family:serif;
-      font-size: 2em;
+      font-size: 1.5em;
     }
 
     .lgbtq {
       background-color: lightgreen;
       font-family:serif;
-      font-size: 2em;
+      font-size: 1.5em;
       
     }
 
     .disability {
       background-color: darkslateblue;
       font-family:serif;
-      font-size: 2em;
+      font-size: 1.5em;
     }
 
     .racial_prejudice {
       background-color: slategray;
       font-family:serif;
-      font-size: 2em;
+      font-size: 1.5em;
     }
 
     </style>
     <p> """ + str(color_words(sentence,tokenizer,loaded_model)) + """ </p>
     """
-    ,height = 100
+    ,height = 150
     )
 
 
