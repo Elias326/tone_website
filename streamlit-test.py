@@ -187,22 +187,22 @@ def color_words(text,tokenizer, loaded_model):
   tweet = re.findall(r"[\w']+|[.,!?;]", text)
 
 
-  ans = str('<p style="color:Black;">Words Highlight:</p>')+ '  '
+  ans = str('<p style="color:Black;font-family:sans-serif">Words Highlight:</p>')+ '  '
   for word in tweet:
     if word in lgbtq_words:
-      ans += str(f'<span style="color:Green;">{word}</span>') + ' '
+      ans += str(f'<span style="color:Green;font-family:sans-serif;font-size: 1.2em;">{word}</span>') + ' '
     elif word in racist_words:
-      ans += str(f'<span style="color:Blue;">{word}</span>') + ' '
+      ans += str(f'<span style="color:Blue;font-family:sans-serif;font-size: 1.2em;">{word}</span>') + ' '
     elif word in disability_shaming_words:
       #31356e for disability
-      ans += str(f'<span style="color:#31356e;">{word}</span>') + ' '
+      ans += str(f'<span style="color:Yellow;font-family:sans-serif;font-size: 1.2em;">{word}</span>') + ' '
     elif word in sexist_words:
       #66757f for sexism
-      ans += str(f'<span style="color:#66757f;">{word}</span>') + ' '
+      ans += str(f'<span style="color:Red;font-family:sans-serif;font-size: 1.2em;">{word}</span>') + ' '
     elif word in general_criticism_words:
-      ans += str(f'<span style="color:Orange;">{word}</span>') + ' '
+      ans += str(f'<span style="color:Orange;font-family:sans-serif;font-size: 1.2em;">{word}</span>') + ' '
     else:
-      ans += str(f'<span style="color:Black;">{word}</span>') + ' '
+      ans += str(f'<span style="color:Black;font-family:sans-serif;font-size: 1.2em;">{word}</span>') + ' '
   return ans
 
 
