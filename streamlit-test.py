@@ -423,6 +423,7 @@ with java:
     .highlight {
       background-color: tomato;
       font-family:serif;
+      font-size: 2em;
     }
 
     .sexism {
