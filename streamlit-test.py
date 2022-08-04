@@ -190,17 +190,19 @@ def color_words(text,tokenizer, loaded_model):
   ans = str('<p style="color:Black;">Words Highlight:</p>')+ '  '
   for word in tweet:
     if word in lgbtq_words:
-      ans += str(f'<h6 style="color:Green;">{word}</h6>') + ' '
+      ans += str(f'<span style="color:Green;">{word}</span>') + ' '
     elif word in racist_words:
-      ans += str(f'<h6 style="color:Blue;">{word}</h6>') + ' '
+      ans += str(f'<span style="color:Blue;">{word}</span>') + ' '
     elif word in disability_shaming_words:
-      ans += str(f'<h6 style="color:#31356e;">{word}</h6>') + ' '
+      #31356e for disability
+      ans += str(f'<span style="color:Yellow;">{word}</span>') + ' '
     elif word in sexist_words:
-      ans += str(f'<h6 style="color:#66757f;">{word}</h6>') + ' '
+      #66757f for sexism
+      ans += str(f'<span style="color:Red;">{word}</span>') + ' '
     elif word in general_criticism_words:
-      ans += str(f'<h6 style="color:Orange;">{word}</h6>') + ' '
+      ans += str(f'<span style="color:Orange;">{word}</span>') + ' '
     else:
-      ans += str(f'<h6 style="color:Black;">{word}</h6>') + ' '
+      ans += str(f'<span style="color:Black;">{word}</span>') + ' '
   return ans
 
 
