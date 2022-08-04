@@ -381,7 +381,7 @@ with dataset:
 #ale changed this too
 with java:
     # color_sentence = color_words(tokenizer,loaded_model,text='Lebron James throws like a retarded bitch')
-    # st.write(color_sentence)
+    # st.write(color_sentence) xfd
     # st.markdown(color_sentence, unsafe_allow_html=True)
     sentence = st.text_input('Input your tweet below:', key=111)
     if sentence:
