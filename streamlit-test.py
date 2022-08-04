@@ -381,7 +381,7 @@ with dataset:
 #ale changed this too
 with java:
     # color_sentence = color_words(tokenizer,loaded_model,text='Lebron James throws like a retarded bitch')
-    # st.write(color_sentence) xfd
+    # st.write(color_sentence)
     # st.markdown(color_sentence, unsafe_allow_html=True)
     sentence = st.text_input('Input your tweet below:', key=111)
     if sentence:
@@ -423,32 +423,38 @@ with java:
 
     .highlight {
       background-color: black;
+      font-family:serif;
       font-size: .3em;
     }
 
     .sexism {
       background-color: cadetblue;
-      font-size: 1.4em;
+      font-family:serif;
+      font-size: 1.5em;
     }
 
     .lgbtq {
       background-color: rgb(150,222,209);
-      font-size: 1.4em;
+      font-family:serif;
+      font-size: 1.5em;
       
     }
 
     .disability {
       background-color: darkslateblue;
-      font-size: 1.4em;
+      font-family:serif;
+      font-size: 1.5em;
     }
 
     .racial_prejudice {
       background-color: slategray;
-      font-size: 1.4em;
+      font-family:serif;
+      font-size: 1.5em;
     }
 
     .neutral {
-      font-size: 1.4em;
+      font-family:serif;
+      font-size: 1.5em;
     }
 
     </style>
