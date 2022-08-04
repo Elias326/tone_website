@@ -446,7 +446,7 @@ with java:
     }
 
     .racial_prejudice {
-      background-color: slategray;
+      background-color: steelblue;
       font-family:serif;
       font-size: 1.5em;
     }
