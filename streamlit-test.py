@@ -194,9 +194,9 @@ def color_words(text,tokenizer, loaded_model):
     elif word in racist_words:
       ans += str(f'<h6 style="color:Blue;">{word}</h6>') + ' '
     elif word in disability_shaming_words:
-      ans += str(f'<h6 style="color:Red;">{word}</h6>') + ' '
+      ans += str(f'<h6 style="color:#31356e;">{word}</h6>') + ' '
     elif word in sexist_words:
-      ans += str(f'<h6 style="color:Yellow;">{word}</h6>') + ' '
+      ans += str(f'<h6 style="color:#66757f;">{word}</h6>') + ' '
     elif word in general_criticism_words:
       ans += str(f'<h6 style="color:Orange;">{word}</h6>') + ' '
     else:
