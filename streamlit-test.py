@@ -423,6 +423,9 @@ with java:
       background-color: tomato;
     }
 
+    .racial_prejudice {
+      bakcground-color: green;
+    }
     .lgbtq {
       bakcground-color: azure;
     }
