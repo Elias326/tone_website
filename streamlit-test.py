@@ -429,7 +429,7 @@ with java:
     }
 
     .lgbtq {
-      background-color: aquamarine;
+      background-color: lightgreen;
     }
 
     .disability {
