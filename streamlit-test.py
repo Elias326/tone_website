@@ -423,37 +423,37 @@ with java:
 
     .highlight {
       background-color: black;
-      font-family:serif;
+      font-family: 'Helvetica', 'Arial', sans-serif;
       font-size: .3em;
     }
 
     .sexism {
       background-color: cadetblue;
-      font-family:serif;
+      font-family: 'Helvetica', 'Arial', sans-serif;
       font-size: 1.5em;
     }
 
     .lgbtq {
       background-color: rgb(150,222,209);
-      font-family:serif;
+      font-family: 'Helvetica', 'Arial', sans-serif;
       font-size: 1.5em;
       
     }
 
     .disability {
       background-color: darkslateblue;
-      font-family:serif;
+      font-family: 'Helvetica', 'Arial', sans-serif;
       font-size: 1.5em;
     }
 
     .racial_prejudice {
       background-color: slategray;
-      font-family:serif;
+      font-family: 'Helvetica', 'Arial', sans-serif;
       font-size: 1.5em;
     }
 
     .neutral {
-      font-family:serif;
+      font-family: 'Helvetica', 'Arial', sans-serif;
       font-size: 1.5em;
     }
 
@@ -479,6 +479,13 @@ with resource:
     st.write("[European Institute for Gender Equality - What is Sexism:](https://eige.europa.eu/publications/sexism-at-work-handbook/part-1-understand/what-sexism)")
     st.write("[Human Rights Channel - Sexism: See it. Name it. Stop it:](https://human-rights-channel.coe.int/stop-sexism-en.html)")
     st.write("[Science Direct - Sexism:](https://www.sciencedirect.com/topics/psychology/sexism)")
+
+    st.subheader("LGBTQ+:")
+    st.write("[Southern Illinois University - Levels of Homophobia:](https://www.rsu.edu/wp-content/uploads/2015/06/LevelsofHomophobia.pdf)")
+    st.write("[Queen Mary University of London - What is Homophobia, Transphobia, Biphobia, and Acephobia?:](https://reportandsupport.qmul.ac.uk/support/what-is-homophobia-transphobia-biphobia-and-acephobia)")
+    st.write("[University of California San Francisco - LGBTQ+ Resources General Definitions:](https://lgbt.ucsf.edu/glossary-terms)")
+    st.write("[Planned Parenthood - What is Homophobia?:](https://www.plannedparenthood.org/learn/sexual-orientation/sexual-orientation/what-homophobia)")
+    st.write("[Planned Parenthood - What is Transphobia?:](https://www.plannedparenthood.org/learn/gender-identity/transgender/whats-transphobia)")
 
     st.subheader("Racial Prejudice:")
     st.write("[United Nations Declaration on Race and Racial Prejudice:](https://www.ohchr.org/en/instruments-mechanisms/instruments/declaration-race-and-racial-prejudice)")
