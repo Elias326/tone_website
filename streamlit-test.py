@@ -170,7 +170,7 @@ def color_words(text,tokenizer, loaded_model):
     elif test_prediction[1] > 0.3:
       count_dict['general_criticism_count'] += 1
       general_criticism_words.append(unigram)
-    elif test_prediction [2] > 0.3:
+    elif test_prediction[2] > 0.3:
       count_dict['disability_count'] += 1
       disability_shaming_words.append(unigram)
     elif test_prediction[3] > 0.3:
