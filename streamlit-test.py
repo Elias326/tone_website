@@ -423,27 +423,27 @@ with java:
     <style>
     .highlight {
       background-color: tomato;
-      color: pink;
+
     }
 
     .sexism {
       background-color: #66757f;
-      font-size: 2em;
+
     }
 
     .disability {
       bakcground-color: #31356e;
-      font-size: 2em;
+
     }
 
     .lgbtq {
       bakcground-color: green;
-      font-size: 2em;
+
     }
 
     .racial_prejudice {
       bakcground-color: green;
-      font-size: 2em;
+
     }
     
     </style>
