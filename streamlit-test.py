@@ -187,7 +187,7 @@ def color_words(text,tokenizer, loaded_model):
   tweet = re.findall(r"[\w']+|[.,!?;]", text)
 
 
-  ans = str('<p style="color:Black;font-family:sans-serif">Words Highlight:</p>')+ '  '
+  ans = str('<p class="highlight", style="color:Black;font-family:sans-serif">Words Highlight:</p>')+ '  '
   for word in tweet:
     if word in lgbtq_words:
       #sans-serif;font-size: 2em
@@ -420,6 +420,12 @@ with java:
         height=350,
     )
     components.html(""" 
+    <style>
+    .highlight {
+      background-color: tomato;
+      color: pink;
+    }
+    </style>
     <p> """ + str(color_words(sentence,tokenizer,loaded_model)) + """ </p>
     """
     ,height = 400
