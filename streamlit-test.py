@@ -429,22 +429,26 @@ with java:
     .sexism {
       background-color: cadetblue;
       font-family:serif;
+      font-size: 2em;
     }
 
     .lgbtq {
       background-color: lightgreen;
       font-family:serif;
+      font-size: 2em;
       
     }
 
     .disability {
       background-color: darkslateblue;
       font-family:serif;
+      font-size: 2em;
     }
 
     .racial_prejudice {
       background-color: slategray;
       font-family:serif;
+      font-size: 2em;
     }
 
     </style>
