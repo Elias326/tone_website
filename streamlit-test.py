@@ -427,9 +427,6 @@ with java:
       background-color: aqua;
     }
 
-    .racial_prejudice {
-      background-color: green;
-    }
 
     .lgbtq {
       background-color: red;
@@ -437,6 +434,10 @@ with java:
 
     .disability {
       background-color: blue;
+    }
+
+    .racial_prejudice {
+      background-color: green;
     }
 
     </style>
